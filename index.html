@@ -8,743 +8,607 @@
 @font-face{font-family:'Apercu Mono';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/otf;base64,T1RUTwAMAIAAAwBAQ0ZGIAUPS/YAAA+YAAA+UkdERUYBPgAEAAAPDAAAACBHUE9TbJF0jwAADywAAAAgR1NVQuD05c0AAA9MAAAASk9TLzKpjl2uAAABMAAAAGBjbWFwK9IKFgAAB1QAAAOEaGVhZPKrR+UAAADMAAAANmhoZWEGQgJ5AAABBAAAACRobXR4S7lbqgAACtgAAAQSbWF4cAERUAAAAAEoAAAABm5hbWWfw+c5AAABkAAABcNwb3N0/7gAMgAADuwAAAAgAAEAAAABAAD0IH1tXw889QADA+gAAAAAyJ2CIgAAAADInYIi//X/DAJkA7UAAAADAAIAAAAAAAAAAQAAA7X/DAAyAmz/9QAIAmQAAQAAAAAAAAAAAAAAAAAAAPgAAFAAAREAAAACAlsBkAAFAAQCvAKKAAAAjAK8AooAAAHdADIA+gAAAgAFBgMAAAIABIAAAK9AACBLAAAAAAAAAABweXJzAEAAIPsCAsT/NABYA7UA9CAAAAEAAAAAAfgCvAAAACAAAAAAABwBVgABAAAAAAAAAEgAAAABAAAAAAABAAYASAABAAAAAAACAAQATgABAAAAAAADAB0AUgABAAAAAAAEAAsAbwABAAAAAAAFAA0AegABAAAAAAAGAAsAhwABAAAAAAAHADQAkgABAAAAAAAIABUAxgABAAAAAAAJABUAxgABAAAAAAAKAEEA2wABAAAAAAALAB8BHAABAAAAAAAMABoBOwABAAAAAAAOACwBVQADAAEECQAAAJABgQADAAEECQABAAwCEQADAAEECQACAAgCHQADAAEECQADADoCJQADAAEECQAEABYCXwADAAEECQAFABoCdQADAAEECQAGABYCXwADAAEECQAHAGgCjwADAAEECQAIACoC9wADAAEECQAJACoC9wADAAEECQAKAIIDIQADAAEECQALAD4DowADAAEECQAMADQD4QADAAEECQAOAFgEFUNvcHlyaWdodCAoYykgMjAwOSBieSBUaGUgRW50ZW50ZSAoQVMgJiBFSCkuIEFsbCByaWdodHMgcmVzZXJ2ZWQuIHdmLXJpcEFwZXJjdU1vbm9UaGVFbnRlbnRlOiBBcGVyY3UgTW9ubzogMjAxMEFwZXJjdSBNb25vVmVyc2lvbiAxLjAwMEFwZXJjdS1Nb25vQXBlcmN1IE1vbm8gaXMgYSB0cmFkZW1hcmsgb2YgVGhlIEVudGVudGUgKEFTICYgRUgpLlRoZSBFbnRlbnRlIChBUyAmIEVIKUNvcHlyaWdodCAoYykgMjAwOSBieSBUaGUgRW50ZW50ZSAoQVMgJiBFSCkuIEFsbCByaWdodHMgcmVzZXJ2ZWQuaHR0cDovL3d3dy5jb2xvcGhvbi1mb3VuZHJ5Lm9yZ2h0dHA6Ly93d3cudGhlLWVudGVudGUub3JnaHR0cDovL3d3dy5jb2xvcGhvbi1mb3VuZHJ5Lm9yZy9saWNlbmNlLmh0bWwAQwBvAHAAeQByAGkAZwBoAHQAIAAoAGMAKQAgADIAMAAwADkAIABiAHkAIABUAGgAZQAgAEUAbgB0AGUAbgB0AGUAIAAoAEEAUwAgACYAIABFAEgAKQAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuACAAdwBmAC0AcgBpAHAAQQBwAGUAcgBjAHUATQBvAG4AbwBUAGgAZQBFAG4AdABlAG4AdABlADoAIABBAHAAZQByAGMAdQAgAE0AbwBuAG8AOgAgADIAMAAxADAAQQBwAGUAcgBjAHUALQBNAG8AbgBvAFYAZQByAHMAaQBvAG4AIAAxAC4AMAAwADAAQQBwAGUAcgBjAHUAIABNAG8AbgBvACAAaQBzACAAYQAgAHQAcgBhAGQAZQBtAGEAcgBrACAAbwBmACAAVABoAGUAIABFAG4AdABlAG4AdABlACAAKABBAFMAIAAmACAARQBIACkALgBUAGgAZQAgAEUAbgB0AGUAbgB0AGUAIAAoAEEAUwAgACYAIABFAEgAKQBDAG8AcAB5AHIAaQBnAGgAdAAgACgAYwApACAAMgAwADAAOQAgAGIAeQAgAFQAaABlACAARQBuAHQAZQBuAHQAZQAgACgAQQBTACAAJgAgAEUASAApAC4AIABBAGwAbAAgAHIAaQBnAGgAdABzACAAcgBlAHMAZQByAHYAZQBkAC4AaAB0AHQAcAA6AC8ALwB3AHcAdwAuAGMAbwBsAG8AcABoAG8AbgAtAGYAbwB1AG4AZAByAHkALgBvAHIAZwBoAHQAdABwADoALwAvAHcAdwB3AC4AdABoAGUALQBlAG4AdABlAG4AdABlAC4AbwByAGcAaAB0AHQAcAA6AC8ALwB3AHcAdwAuAGMAbwBsAG8AcABoAG8AbgAtAGYAbwB1AG4AZAByAHkALgBvAHIAZwAvAGwAaQBjAGUAbgBjAGUALgBoAHQAbQBsAAAAAAMAAAADAAACFAABAAAAAAAcAAMAAQAAAhQABgH4AAAACQD3AAMAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAQABQAGAAcACAAJAAoACwAMAA0ADgAPABAAEQASABMAFAAVABYAFwAYABkAGgAbABwAHQAeAB8AIAAhACIAIwAkACUAJgAnACgAKQAqACsALAAtAC4ALwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAFsAXABdAF4AXwBgAGEAAACGAIcAiQCLAJMAmACeAKMAogCkAKYApQCnAKkAqwCqAKwArQCvAK4AsACxALMAtQC0ALYAuAC3ALwAuwC9AL4A7QByAGQAZQBpAO8AeAChAHAAawD/AHYAagEIAIgAmgEFAHMBCQEKAGcAdwEAAQIBAQDXAQYAbAB8ANYAqAC6AIEAYwBuAQQAzAEHANUAbQB9APAAYgCCAIUAlwDFAMYA5QDmAOoA6wDnAOgAuQELAMEAyQD1AP4A8wD0AQwBDQDuAHkA6QDsAPIAhACMAIMAjQCKAI8AkACRAI4AlQCWAAAAlACcAJ0AmwDCAM0A0wBxAM8A0ADRAHoA1ADSAM4ABAFwAAAAWABAAAUAGAB+AP8BMQFCAVMBYQF4AX4BkgLHAt0DlAOpA7wDwCAKIBEgFCAaIB4gIiAmIDAgOiBEIF8gcCB5IKwhIiEmIgIiBiIPIhIiGiIeIisiSCJgImUlyvsC//8AAAAgAKABMQFBAVIBYAF4AX0BkgLGAtgDlAOpA7wDwCAAIBAgEyAYIBwgICAmIC8gOSBEIF8gcCB0IKwhIiEmIgIiBiIPIhEiGiIeIisiSCJgImQlyvsB////4//C/5H/gv9z/2f/Uf9N/zr+B/33/UH9Lfy7/Rfg2ODT4NLgz+DO4M3gyuDC4LrgseCX4IfghOBS393fsN7+3s/e8t7x3ure597b3r/eqN6l20EGCwABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJsAFYAAAAAAU0AAAJsAAACbADwAmwAnQJsADICbAA/AmwADQJsADUCbAD9AmwA7AJsAMQCbAB8AmwAWgJsAMYCbACIAmwA5QJsAD4CbAA2AmwAdQJsAHcCbABQAmwAPgJsAF8CbABoAmwAawJsAF0CbABSAmwA5QJsAKECbABiAmwAbwJsAHECbACEAmwAKgJsABMCbABgAmwAMQJsAE4CbABbAmwAWwJsACwCbABEAmwAYQJsAEkCbABiAmwAhQJsAEMCbABHAmwAJgJsAGMCbAAmAmwAUAJsADsCbAAwAmwAPgJsABcCbAAfAmwAJwJsACkCbABJAmwAzQJsAEMCbACTAmwAWgJsAEYCbADXAmwAbwJsAGQCbABZAmwARgJsAEwCbABfAmwAUwJsAGwCbABtAmwAlgJsAG8CbAA+AmwAMAJsAHECbAA+AmwAaAJsADkCbAB7AmwAZwJsAEICbABnAmwAOQJsABsCbABRAmwASAJsAG4CbAClAmwBDgJsAHUCbABMAmwAAAJsAPACbABTAmwAXAJsADsCbAAtAmwBDgJsAGYCbAChAmwAJwJsAJMCbAArAmwAXQJsAIgCbAAnAmwAugJsAJwCbABaAmwAygJsAMsCbADZAmwAagJsADQCbADlAmwA3QJsAMcCbABzAmoAKQJsAB0CbAAdAmwAFwJsAJYCbAATAmwAEwJsABMCbAATAmwAEwJsABMCbP/1AmwAMQJsAFsCbABbAmwAWwJsAFsCbABhAmwAYQJsAGECbABhAmwAGgJsAEcCbAAmAmwAJgJsACYCbAAmAmwAJgJsAGQCbAAJAmwAPgJsAD4CbAA+AmwAPgJsACkCbABpAmwARQJsAG8CbABvAmwAbwJsAG8CbABvAmwAbwJsACQCbABZAmwATAJsAEwCbABMAmwATAJsAG0CbABtAmwAbQJsAG0CbABJAmwAcQJsAD4CbAA+AmwAPgJsAD4CbAA+AmwAWgJsAD4CbABnAmwAZwJsAGcCbABnAmwASAJsAFgCbABIAmwAbQJsACsCbABGAmwAJgJsAEkCbAA7AmwAZgJsACkCbAA/AmwAbgJsAAgCbACPAmwAjwJsAMcCbADxAmwA0wJsAMoCbACFAmwAeAJsAD0CbAAwAmwALgHaAAADtQAAAdoAAAO1AAABPAAAAO0AAACeAAAAngAAAHYAAAC9AAAANAAAAmwAiAJsAIgCbABpAmwAQQJsAMgCbADHAmwAxwJsAFwCbABbAmwAWwJsAFoCbABaAmwAxwJsAB4AvQAAAmwAJQJsAJ4CbACoAmwAKADtAAACbACtAKYAxwC7ANEAxwDHADMADABZAGoAUgBaAGMADwAIAEwAbwBaAFoAPQAvAC8AAAAOACQAAAADAAAAAAAA/7UAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAOAAAAGAAAAAAAAgABAAEBEAABAAQAAAACAAAAAQAAAAoAHAAeAAFsYXRuAAgABAAAAAD//wAAAAAAAAABAAAACgAeACwAAWxhdG4ACAAEAAAAAP//AAEAAAABc3VwcwAIAAAAAQAAAAEABAABAAAAAQAIAAIACgACAGwAfAABAAIARABSAAABAAQCAAEBAQxBcGVyY3UtTW9ubwABAQEn+BAA+E4B+E8MAPhQAvhRA/hSBID7iPj4+kkF+UwP+rgRoBwxGhIAOAIAAQAFAAcADgAVAB4AJQAsADIAOQBAAEcASQBQAFcAXgBlAGwAcwB6AIEAiACPAJYAnQCkAKsAsgC5AMAAxwDOANUA3ADjAOcA8gD5AQIBCQERARkBJAEsATUBQQFIAU8BVgFcAWEBYwGrAewB9wH9AgNOVUxMQ1J1bmkwMEEwdW5pMDBBRG92ZXJzY29yZXVuaTAwQjJ1bmkwMEIzbWlkZG90dW5pMDBCOXVuaTIyMDZ1bmkyMTI2cGl1bmkyMDAwdW5pMjAwMXVuaTIwMDJ1bmkyMDAzdW5pMjAwNHVuaTIwMDV1bmkyMDA2dW5pMjAwN3VuaTIwMDh1bmkyMDA5dW5pMjAwQXVuaTIwMTB1bmkyMDExdW5pMjAyRnVuaTIwNUZ1bmkyMDcwdW5pMjA3NHVuaTIwNzV1bmkyMDc2dW5pMjA3N3VuaTIwNzh1bmkyMDc5RXVyb3BhcnRpYWxkaWZmcHJvZHVjdHN1bW1hdGlvbnJhZGljYWxpbmZpbml0eWludGVncmFsYXBwcm94ZXF1YWxub3RlcXVhbGxlc3NlcXVhbGdyZWF0ZXJlcXVhbGxvemVuZ2V1bmlGQjAxdW5pRkIwMkNSLjAwMWFwcGxlTm9Db3B5cmlnaHQgKGMpIDIwMDkgYnkgVGhlIEVudGVudGUgKEFTICYgRUgpLiBBbGwgcmlnaHRzIHJlc2VydmVkLiB3Zi1yaXBDb3B5cmlnaHQgKGMpIDIwMDkgYnkgVGhlIEVudGVudGUgKEFTICYgRUgpLiBBbGwgcmlnaHRzIHJlc2VydmVkLkFwZXJjdSBNb25vQXBlcmN1Tm9ybWFsAAABAYcBAAEGAGgAAAk3AHwAAEIdAYkAAGACAGcAAGQAAKAAAGYAAIMAAKoAAIsAAGoAAJcAAYoAAKUAAYsAAKEAAJwAAYwBAH0AAJgAAHMAAY4AAIUAAY8AAI8AAHgAAJ4AAJsAAKMAAHsAAK4AAKsBALAAAK0AAK8AAIoAALEAALUAALICALkAALYCAJoAALoAAL4AALsBAL8AAL0AAKgAAI0AAMQAAMECAMUAAJ0AAJUAAMsAAMgBAM0AAMoAAMwAAJAAAM4AANIAAM8CANYAANMCAKcAANcAANsAANgBANwAANoAAJ8AAJMAAOEAAN4CAOIAAKIAAOMAAJEAAIwAAJIAAI4AAJQAAMAAAN0AAMYBAOQAAGUAAH4AAIgAAIEBAIQAAIcAAH8AAIYAAZAPAG8AAIkAAEEAAAgAAHUAAGkAAHcAAHYAAHABAHQAAHkAAaAAAHoAAGsBAGMAAaEIAJkAAaoCAKYAAa0MARECAAEAIAAjACYAJwBVAGcA0AEaAXYCGgInAlsCjwLHAtQC3wLhAugC9wNzA5cD7gRVBIIE2wVCBVwGLgaVBqEGrwa7BtUG4gdvCAcIEQhrCHcIlAiZCLgJBwkvCTQJbQmWCacJ1AnfCeQKCQpWCp0KpQq+CsYK4QsNCz0LRAtMC2gLeAuVC7ULwgvKC9cL+QwFDDMMOAxwDWQNog29DfgOJw5YDp4Otw68Du0PHw9kD3MPtg/KD+UQFBBFEE4QVhC0ELsRHBFFEUYRdRHAEmIS2hMdEy0UERQhFHQU1xTlFQUVBxVMFVsV0xXnFfwWERYZFkcWgRaJFpIWrBckFzUXUxdyF40YHBgkGCsYNhhOGGEYcxivGMYY0hjeGPEZCRkRGRkZLhlKGY8ZohmqGbIZwxnRGeUaFxqjGqsashq/GtYa4RsMG4sbkxubG7Ib0Rv1HBEcpBy5HMEcyBzZHOwc8xz7HSEdQR3VHfweAx4KHhoeJx46HlMexB7LHtIe3h8DHxMfNB9LH1wfgh/LIBogcSB+IJMgryC/IM8g+yEIIRUhSCFYIWghoSG5IdQh+iJ1IpEilCKXIpoinSKgIqIipCKmIqgiqiKsIq4isCK6IsQi0CLbIuQi9iMBIwojFyM1I3UjlCOWJDgkQCRJJFYkWCTLJN8lLCV+JZkmByZZJt4nISeeJ7wn5ifwKBIogSiUKLQo7CkCKRgpRCmCKbMptCpNKtCaCgHh3/er3wP4qRb5UPxT/VAH9//XFfur+Lj3qwYO+zMO90IODoj3H/jId8YK96n3XBXNBqP4iAX7BgYT4H79DxVkqW6zs6mosrNtqmNjbWxjHg74YveKAfeK+GIVlwr3kxaXCg6gdvdk1fcc1fdkdwH3Svg2FXX7HAX7AkHtBmn7ZAXZBq33ZAX3FwZq+2QF2Qas92QF9wbVJQah9xwF9wLVKQat92QFPQZp+2QF+xcGrPdkBT0GavtkBfsGQQb3yxZ1+xwF+xcGofccBQ4n90T4ufdDAfbj5Nvz4wP4sPjCFW/UUMUymgjrOy0H+wR+Sj4kSAqj+wzcQvcIfhkt2+kH9wuY1Nb3GRpgCrTYy7poRKoe2LIFDoPR90jR19H3SNESmNT3QtRd1PdC1BP7xvhGtwoT/aqqmrG4GhP7nQpsbHxmXhqPChP9iwq7Cvd0/NK3CqqqmrG4Gp0KE/tsbHxmXhoT/Y8KiwoT+7sK++t6bwoOewr5ENMSwN+C2/cs2hO0952DFdjJpsK7HxNsxkEF8Ab7BPcinq+dtJq5GVPIeVd7Y35wGfsm903CqLCpnqsZnKiTqKYasH2sbqcep25mmVwbX2Z9b20fbm98Z2AaYZ9atFQeE7Q/ZE8+Khr7Fd889xQe1wREUr3b0KvAyq8f90D7cQVeZl11UxsTrFL4exW6qa24uKtrYlhnakhqHmq2e6+pGg74YveKAffq+GIVlwoOkgr3gOED9+z5ghVD+wVn+xr7LRr7La/7GtP7BR7fBkT3BGj3GfcvGvcvrvcZ0vcEHjcGDpIK98LhA/dY+YIV0vsErvsZ+y8a+y9o+xlE+wQe3wbT9wWv9xr3LRr3LWf3GkP3BR43Bg74DHb39XcB96jPA/eo+VgV+x4H+xe2dkr3FmA7+wPCZNz3A9z7A8KyO/cD9xa2dsz7F2AF9x4HDvcMdvdL0Qr3pff4kAo1dvdtdwH3o6sKDm0K95GeFUQKDpIKyVkV4Qb4Kvm0BTUGDoPb+MDbAcHj9+TjA/iG4xW4zKLi9wIa9wJ04l7LHsxeTas6GzpMa0peH15LdTT7Ahr7AqE0uEoeS7jKa9wb3Mmry7gf+/j3mhX3QMj19qikg3yiHvtk/FEFcrx/y9ga9zz7qhVucpOadB/3ZPhRBaRbl0w8GvtATiEgHg6L1/kEdwH3vd8D9w74xhUvB/dD8wX8hvtIP/hQ1/tI+QRrBw6L2/i42wH4WOED+LsW2/u7B/d2964FsLqevsEawny4bqwetGdYn0obVlx5ZmMfY2d0XoZU4HsY15a6vswbsKeAdJ4fnHaUcWoaXn5qX1Qe+6j76gVkBw6D2/e8zvdN2wH4T+ED2/dUFZFPo1u1Zghmtb15xhvOwaC1tR+1tqDCzhrLeb9osh6zaF+fVRt+goqJhR/3RveFBab8EDv3kAf7M/turlwFlJ2gj6Ib4MJWLC5TVDc7Xbfifh83gAUOoHb3Kdv4a3cB+ALhA/hYFvcp9dsh+GstB/u8/JgFaPfE+ykH+MwE++f7UgcOg9v3zNv3MNsB+F3hA+r3SxX7D5fkR/cLG87Cobe1H7a3oMTQGvclOub7GVxTd3BvHqX3XwX3odv76gZj/BLCfwW4rsasyhvfvU4sLlJMNkNYt95/HzZ7BQ6D2/e82/eYdwHz4/ee4wP33fhUFXx+iYaBH/cs958FKwb7Y/v5BXNif2BcGkqgVbRfHmC1wHXLG8vAoba0H7W3oMHMGs53wmK1HrZjV6BLG/sd+3gV5MHG2trBUDI2U0w+PlPK4B4OoHb5ANsB+MD5KxWw/FU79+cH+7v9AAXoBg6D2/eW2/dy1xLo40vh92rhS+MT7PiL+J0VwHm3Zq8er2ddnVMbU115Z2YfZ2d5X1YaUKxPunIeE/JLbmNMNxpLoFi1ZR5mtb54yBvIvp6wtR+1saC+yxrfY8pLqB4T9LqkrMfGGif7dhUT8qN0l2tkGmR/a3N0HnRzbH9lG2Vsl6JzH3Oif6uyGrKXq6OiHqKjqpexG7Gqf3SjH3z3xhUT7J52lXFqGmqBcXh2HnZ4cYFqG2pxlaB4H3iggaWsGqyVpZ6gHqCepZWsG6ylgXaeHw6YdveY2/e82wHd4/ee4wP3v/eQFZqYjZCVH/ss+58F6wb3Y/f5BaO0l7a6Gsx2wWG2HrdiVqFLG0tWdV9hH2JgdlVKGkifVLNgHmG0v3bLG/cd93gVMlVQPDxVxuTgw8rY2MNMNh4O95GeFUQK9+oERAoONXYB936rCuf4aBVECg7mdvh0dwH4j9GTCg73UtXn1QH4kvf4FdX8I0EH+CP7OhXV/CPFCuZ2+HR3AfcF+LqWCg6I9xrS0PgC0hL3SdiA9xqf3xPs94vKFWaobrCyqKiwsm6oZGZubmQe9xv3nxVkenN3bBsT9Gt3nqunm6KsnR/wvAW+pKWzwRq0fK5sqB6obGGaWBsnSFAwex/ZfgXDm7GvvhumoYR9mx+Zf5J6dBprfXNufB53gGB9bnsIUm5vYVQaP79b28y4rtGjHg4t0vcO1feZ1fce0wG139rd92vYA/jX+H8V9ycu2/sr+08h+yH7lB5kB/uE9wT7HPdY5NSmwsMeZMgFW1tPc0Qb+yc+9wT3Vx+tB/dp3fcH9xPwzU4nHnYHqHBkmlgbVGB4ZWofamV7Wk8aUJtarGQeZKy3eMEbua+crqUfk18F2Qb7uPdZFdqyvs7Oslg8PmJVSkpiwdgeDqB290/f+EE5Cg5yChLr4/ee5lPDU+YT8usW95oG9xzd2vcV313KRqcfE/S6pKy/xxr3B0HM+xEe+4oG9438BRXoumI5OFxiLh/7NfeLBvcw97EVE/jOtmlISmFoRx/7MPddBg6ACgG85gNNCjikBQ7WCgHZ4/fG6QPZFvdFBoMK+0UG9zw3rQo7+KgGDnIKYwoOoHb319/3Zd8B5uMD5hbj99f3wN/7wPdl9/Hf/EkGDoPfVHb3od/3o98St+b3WveMMOYTfPjZFvf1+4w3BxO69zEGE7z7FYJWSyxsCvcXazTd+xiGCvsHpjLBTR5Owc5s3BvYz67Oqh8TfJAtBQ6gdvfe3/eydwHP4/fI4wP4ZPgyFfvI97Iz/VDj9973yPve4/lQMwYOmgpdCg6/CncB+DbjA/g293IVKFtcPEdeudp7HjJ4lFSiXrFnGWexvHnIG8q/n7KzH7Ozn8XWGvhwM/xyBw6JCu3jA/ef+BUV98L3zwX7Bwb7oPutBfetM/1Q4/fzB/e5+/MF9wQGDsgK+NbfFfv5+Pwz/VD4UQYOiQrO4/fK4wPOFuP4lQb3DvvMBc0G9w73zAX8leP5UC0H+yn8GPsp+BgFLQYOiQrS4/fB4wOCCg6ACigKDqB298Df93zfAe7j97rmA/gA98CqCvud/VDj98AG3wT3fPdDvAqACgHCCgP42vfyFUEKPwrLwp+zuB/HT8jKSswFrsec2Oga+zz7ghVzb2h/Yhv7A0Xh91Dpm9Cstx9XCqxfm0YtGkqCVXpeHk3KTkwFDqB2997f917fAdvj96TmA/jmFvtl9+QF7J+8x+4a9w09y/sUHvuJ/VDj9973CQb3YfveBfs3+PwV1rFpSEhlaUAf+zP3XgYOgAo0CtiyBQ6gdvj835sK9574/BX8/OP4/Pdu3/ygNwcOvwowCvxdBw6JCvfK9xEV+1j409wK94n9UAXfBveJ+VDcCg6JCvhc9xYVIfg/BTsGIfw/YfjO3ArO/VAF9wEG8vgv8vwvBfcBBs75UNwKDokK95j4DBX7cfwMBfAG9z73tvc++7YF8Ab7cfgM91L32AUmBvsf+4L7H/eCBSYGDqB2+VB1Cg7WCgH4NIoKDlnX+RzXAfdh2wP4bVkV1/tQ+Rz3UNf7oP20Bw6SCvhtWRXhBvwq+bQFNQYOWdf5HNcB9+PbA/cn+YIVP/dQ/Rz7UD/3oPm0Bw74Tnb3q3cB5fg5FeEG9xr3X/ca+18F4Qb7T/erBUkGDjvbAfi6OxXb/HQ7Bw69Cvdr+VQ6CmYKkQoTvCIKE3yZCg7BCu/f97/hE7z35ocKSFNsYmwf96A3BxN8/VjfzgcTvFoKeQoB5OEDUgpCqQUOwQrR4fe/3xO898GmCszFq7aqHxN8SN/5WDf7oAe0bFOqSBsj+xMVRQoTvEcKDngKLgoOxAr3FNcB94HfA/iF+TsVnmtolWUbJFdR+wcfbPsiP/citAr3WNf7WKwHyqSrvKWmgnmnHqDVBQ77aNX3O9PU0/dW06d3Et7fR91k3fdU3WvhE/mA9yL36xVilWmgbx4T+oBcenBkXhpql3KjeB4T/EBocHpnXhr7AOFR9yfMw5mouR65qKK2xhrmTrv7AB77FwYT+oBcc5mnopqcqpcffaaqhK4bv7aaqqwfrKqctL4aq4SnfaMe4Ldl0CJVBZxtapRnG1hgfGxpHxP5QGpsemJYGveD+84VxKdyWVJUaCwfE/yAMFGvxq+ZpKiaH4iZnIqgG4D4FRWcnqKUphumooJ6nR+eepR0bBpsgnN4eh56eXSDcBtwdJSceB8T+YB5nIKjqRqplKOdnB4O1Qr3WHcB9wDf95HfA/il9/AV9wFYwiRAR2FQYx73vTf9WN/3ZwfQm8GrtB60q7CfthvJqmhEH/ve3/fwBw6hCs33HqAK+wn3HiLfE+RPChPkE+j3DfdkdAr7U3b5FtXN9x4S98/3HiLfE+j3hftoFcCYuKawswiwsp7Bzhr4cPuuQfda/BAHKGRYK2seE/Dx+ZZ0CsMK93R3AfcD3wP3Axbf95EG94L7kQX3Agb7lvel93/3ewX7Agb7a/tnBfgzNwcOg9f4wNcSyfdzN98T4Pdd91IV+xHUQvcJ9NLKyQpiShtEaLTcH/iS+3M/BxPQ9x8GDqB2+EfYg3cSu9/3JN/3JN8UHBPc+OD4DBXnYLdIV15qWnAewnxoplUbWmRzW20fE7zLN/yM3/eBBxPcuAr3gQe4CvgMBw7VCoN3EvcFtgoT2KcKE7iuChPYqQr38wcOeQoqCg6kCoN3EvPf97/hE+z36ocKSlFrYGwfE9zON/1Y3/egB2Kqw2zOG/P3ExVHChPsRQoOpAqDdxLE4fe/3xPs97SmCs7DqrSqH/ug3wcT3PlYN0gHE+y2bFGrShsj+xMVRQpHCg6gdvfs9zw/14N3EvcP3xOo+MP37BX3AIZOxycbOk1pSGAfE5joN/yM3/dKB9ycyay3HhOouKy0obobE8jErGxOkh/fBg55CgH3HN33Z+ID98hDCg6D1/f81/dgdwH3XN8D91z4QBX7mQf7CMdQ9wPHv6G2th5s0gVjZWJ3XhtRbq3PH/eW94rX+4r3YAc3VgX7K/saPwcOnwq+ChO4ZQoTeFUKE7hWCvvzBw7DCgH3yu8V+zb4KNwK92f8jAXfBvdn+IzcCg7DCgH4SvcXFTX31wU3BjX710b4CQU1BvcC/IwF1wbs9/bs+/YF1wb3AviMBTUGDsMKAffK9+UV+wP3OwUoBvc4+4H7S/ufBeoG9xr3Wvca+1oF6gb7S/ef9zj3gQUoBg7PCvlYdwFeCg6L1/f014EKDtIK9zn3SDv3ghTgE+j3nb0VT7Njxx73Htf7BQYT8Gt+mKsf90kHynKiXpceuJekosoa90kHq5iYqx4T6PcF1/seBk9jY08f+0AHE/BIaHRKHj8HE+jMrnRIH/tABw6oCvm0OwYO0gr3CfeCO9s790gU4BPw9/f3chUT5M6uoswe1wcT8Epoos4f90AHx2OzTx77Hj/3BQYT6KuYfmsf+0kHTKR0uH8eXn9ydEwa+0kHa35+ax4T8PsFP/ceBsezs8cf90AHDveb6V/pEhNA9xH3oLIKqYN6sh8TgGEKE0CcZGmTbhtUW2pUbh+8WAUODs8K+Mj3H8YK9+v3vBVJBnP8iAX3BgYT4PsT+Q8VY6lss7OpqrOybahjY21uZB4OWfds+AT3bAHe4fcH2wP4ZPeXaQpn3FG4PJUZ9yM7+yMHTIFabmdaCGhbeVNKGkqdUq5aHq9bvG7Kggj7I9v3IgfblsW4rtxCqRgOg9tj2vdp2/d02xL3I99z2BO091T32BWSb49zdhpIa1Q8QB7ETQUTeKavsZiyG5qihH6oHxO4fqmohKcbyL2w1rMfSa8FV2x0e2cbfnmRmHIfE3SYcnWSdxtvboJ5bR/AvqXGzhqgiaCGoB73Htv7OAYTuH6vhK2rGtu8tcvDr3FIqB7WrgXja0e9KxtSXHlmZh9mZ3haThpukmmaYx5WOwYO2Hb4incB91X3fgP3J/g6FVxHiy26RzNIGNBGzuLPWOmLz74ZzjTQ0DPOus+L6VzPGePORtBINEe+LYtHWBlI4kZGBfc6MBWioKiXrhuuqH90oB+gdJZsZhpmgGx2dB50dm5/aBtobpeidh92ooCqsBqwlqqgoh4OoHb3CNPj0/f0ywr3nvcIFfsI4/cI9zDT+zDj9zDT+woH90v39AUqBvs8++T7PPfkBSoG90v79AX7CkP3MDP7MEMGDqgK9/E7Btv4VxU7+/HbBg77aNv5jNsS8dpX3/dm31faE9T4qvdyFctrsDu0HnuTdpRylk+mGH2SfJN8lQhuoH2lrhrLtLHLx7VpRqQe2KQF7nNDxvsAG1RdempoH2hqeV1SGl+ZZqhsHhPoXGh0XlMaS6tm22Iem4OggaSApICfg5mEmoSZg5qACKp3mHFoGktiZUtPYa3Qch4+cgUoo9NQ9wAbwrmcrK4frqyducQat32wbqoeE+S6rqK4wxo8ghVreXBmdB56lHSWbZhtmHKVeJQIZJxnrLAaq52msKIenIKigKl+qX6kgZ6CCLJ6r2pmGg745/cFAfc1fwoD9235WCkK08jMwPdawMzIAbLLzcb3tUAK93H7XxVpfnN6aRtaaqvOzqyrvK2jemmYH76XBcSAW65MG2ZqfnFuH29xfWVaGlqZZadxHnGorH6wG8q7rsSWHw73vMf3GcPuxwH3J8/3U80D92v4MxW4sKjOHuJ+BmN+bXB3HndxboFsG2JzobAf95X3HBXzTbwoQ1FfR3oexHwFs5itprYbwrNyUh96Owf7A0ddNzy+Y9LGw6SwpB+UUQXBBg6zCvfl23AK+Kr7W3AKDvci94s/1xL4X98TYPhf980VE6D7P9/3i/xWBxNgPwcObQrTyND3Q9O80MgBssv3Ar/pwfNACveo+8MVMvcVBbKTpqq2Gr5prU8eIfu8v/cSowbj+xIFTveLFaiZf3NzfX9uH1jTBg75DNcB+Ef5DBXX+40/Bw74JM33Qs0B9zDQ9z7QA/db+E8VbqiwfbgbuLCZqKgfqKiZsLcat32vbqgeqG5mml4bXmZ8bm4fbm59Z18aX5lmqG4evPdBFZuaoJOlG6Wgg3uaH5p7k3ZxGnGDdnx7Hnt8doNxG3F2k5t8H3ybg6ClGqWToJqbHg6L1fe00Qr4phbV/ExBB/dL+EiQCvgEx/d0xwH39s0D95n47mgKxnwFDvgAx/cFt87HAfgJzQP3X18KS3wFDr0K96/4xDIKzwr3WNdczQoS9bYKE9z3UvtgFfdkB4OeooenG9DMtMewHxO8VQoT3FYK/VgHDs8K+dDXAfeJ393fA/eJ+VAVVl14ZWUfZmZ4XVYaVp5dsGUeZrG5eMAb/Jrf+dDd/dDf+dDJ1/vMBw73kfe7FUQKDtcKdwH33U+OCvgEw/ewdxL3X/cdTckT4Pg3+ASMChPQsQoO97zG97XHAfcHzveSzwP3PPf3FWSuunfGG8a6n7KuH6+znbvEGsR5u2eyHrNoXJ9QG1Bcd2NoH2hkeVtSGlKdW65jHrv3ixWnoqqZshuyqX1voh+ib5dpYxpjf2l0bh5vdG19ZBtkbJmndB90qICtsxqzlq2ipx4O+F+zCvet+LBxCvyq91txCg6YdsjH95PHCve5yRP6+KGDZAr74d5vCvvT+0mNCg6Lx/d0x6PHCvfozRP69434BI0Kq/tAbwr7K/vPaAoOmHbIx/ePx/cFt87HAaJfCnH7sm8KYPzBZAoO+2jS+ALQ0vcaEvcq35/3GoDYE/j4GPhFFbBuqGZkbm5mZKpusLCoqLIe+xv7nxWynKOfqhsT9KufeGtve3RqeR8mWgVYcnFjVRpimmiqbh5uqrV8vhvvzsbmmx89mAVTe2VnWBtwdZKZex99l4ScohqrmaOomh6flraZqJsIxKintcIa11e7O0peaEVzHg5nCvsb9846CmcKl/c+Mgp6CveKOQo790QvCogK7doKE+gsCvsT91hRChPwMQoT6FgKDogK9wP3BQH3Nn8KAywKL/fSKQqICtT3WAH3Z/daAywKKPebTgqL3/Lfx9/3Xd8B963jA4AW4wa/908F9yz7T/fE3/ts94v3Ot/7Ovdd92Lf/BwG7fsGFfvP+xgH4PfPBQ7XCr+L3/i43xK85hO4TQoT2Puf+52OCnIK91x3Ywrx91w6CnIK91x3Ywr3ccMyCnIKi8nMCubjE+xJChPc9x/JLwpyCub3BRLm435/ChP6SQr3F/dgFRP2JApzCvvS+hg6CnMK+3v5iDIKmgqLycwK957jE9hGChO4+7j5ji8Kmgrm9wUS9zf3BYHjhPcFE+hGCvvE+hwVE/QkCovf93Tf93TfEqX3ivtZ4/fS6RTgE+zW98gV+8j3UQeDCvtR+8gGE/RaNwYT7Pd598itCi/3dAYT9PcB3wYT7PsB93QGDnoK7doK0uP3weMT3IIK+6bdOAo1CvuT9+s6CjUK+yD3WzIKgAqLwfc4dzcKE7z7aPdhLwqACtHZZdk3CvuX93U4CoAK3vcFAbHmrH8KqyYK+3T37ykK9xZ2+Dh3AffK+AcV+zL3MldX9zL7Mvsy+zK/V/cy9zL3Mvsyv7/7Mvcy9zL3Mle/BQ6D3zl2+R/fnncSwgoTbPh2+RUVuF5RoUYbO0psTVgfWE5yMvsHGjCcQK1OHjshyl/N4QUTnF64xXXQG9vMqsjOCsmk5NAK5nrWacge2/VMtwUTrPuCJBW9s3poqR/7rfwGBX6zhLzGGvdQ0eH3Ax73SfumFftQRTX7A1ljnK5tHvet+AYFmGOSWlAaDlQK9xn3XDoKVAr3jsMyCr8Kyfc4MAoH9zzJLwq/Cnf3A/cFAcnjl38Kli0KB/cw92ApCnoK93B1Crj4dDIKoHb3Kt/3fN/3KncB9OP3qOYD9/T3KqoK+zP3KjP9UOP3KgbfBPd89zG8CnsK9+zX92jXEtD3Gjff2fdpO9tm3xN1APcL9+wV++zf+IoH3rO6zMu1ZUdEamhKHhO6AGg/rgYTuIDkv1wwMFpcM3d1jZB0Hz8Hhp+jiaYb9xnd1vcl8FHJPJofE7YAwJuwvdQa80rW+w1VXnloZx5naHlZSho2BxO6AFk/Bg48Cvvd+VQ6CjwK+2X4xDIKZgqLwfc4d5EKE7ciChNvmQr7rPjKLwpmCtHZZdmRChO7IgoTd5kK+9z43lEKE7sxChO3WAoOZgre9wUS9wPhfH8KZd8TvIAiChN6gJkK+7P5WJUKE70AIwoOZgq491gS9wPhpfdan98TvyIKE3+ZCvvC+SFOCngKAa/h9zHh9zLfA/jz97AV9yVS3idYXG5cch6+eGSkUBtiaX1wbx9vcHpphmPVdxjElqWothu2pGVTH2tUB/sEP1AgK8VT4tC7qcemH1SctmjGG9y4vfOqH0OgBUZ4dG1gG1hvyPQf94YG/Hk0Fcazq9Qet2QGQG5TTmJxqrse99b3tRW8qVZCH/syBtetvbgeDtcKv4t8ChLk4RO4UgoT2Pt0+1OOCkIK+xH3oDoKQgp69xAyCngKygrX4RPsJQoT3Dv3Fi8KeAre9wUB1+GSfwoDJQov96QpCmoKuPemOgpqCvci9xYyCqEKi8n3OHegCjffE9RKChPY+4JBBhPUE7Ti9xwzChO4+y77OAUOoQrm9wWgCvtu9wWg32n3BRPsTwoT7Nf3qpUKE+ojCg55CveHdwHU4ffI4QP30PjtFcZfrWefVgikd1eeXxtCUXJYX4UKt8Vy1BvUxqW+th+2v6HL2BrkfNZsyh5sylnFRr+tvhhRtWZVdJhwmG2YGWNOq36mfqB/GWVSxmEF91L7thVZfWBwZh5ncGZ5WhtaZZ2vcB9wsH62vRq9mLamrx6wprGdvBu7sXlnph+maJlfWBoO1QqDd+3aCvcFtgoT1qcKE7auChPOqQoH+9j43lEKE9YxChPOWAoONgqI99Y6CjYK8/dGMgp5CovB9zh3OwoTvLH3TC8KeQrR2WXZOwqB92A4CnkK3vcFAcnhmX8KmCcKpffaKQqlCveb+E+ECvef+zcV1fxMQQf3QftNhAoOdXaufAqudwHJ4ffY4QP4S/hxFaJlYJdbTApGoFC0Wh5QQMhgwtEFdLG2f7tQCtB2xmK8HsbWTrYFdfu7FVkKbnGSmXIf92n3pAWebJVmYhr72Ba+mraorx6vqLOdvBuopYR9pB/7afukBXiqgbC0Gg5TCur3XDoKUwr3YcMyCp8Kyfc4PQr3E8kvCp8Kd/cD9wUS8t9yfwps3xO5ZQoTeVUKE7pWCgf3B/dgFRO2JArPCvlYd/dwdwFeCvsuwzIKpAr3WHcB49/3v+ED99qHCkxYc1tjH/egN/4k3/ejB1oKzwr5WHf3A/cFAfdFfwoDXgr7j/dgKQqhCqAKN98T0EoKE+D7gkEGDsgK9xn3mxX7m/hR3/v593kH9ybeZ8z7Ak0F98Ez+/MHMVivSgUOg9f4wNcS0fdzN98T0Pdl+AIV+wxHr0vfugUxB/sQ1ED3CfTSyckKY0obRGi03B/3Hwf3DM9nyzdbBfezBxPg+3M/BhPQ9x8GDnIKErHm9zXjM/eIE/j3v/lQFfszJfsK+3z7fPH7CvczH/ek3/tV94sGE/T3MN8GE/j7MPdd90vfBvxE+/IV91TB3fYe/LAH+wBW1vdTHw6YdveG1/dedwHU4fcK4QP31YMVdwpuVmNrWIAZ9zb3Wa4H0HbFYbkeumFQoj4KWLjHctYb+zb3mBXgttXWnh77+Qc/n2HT4hr3YMUV9w4HxYCvYplFCA6ACvdudzQK+xb3h0sKeQr3bncB9xvd92fiA/fHQwqbwUsKegr3A/cFEvc29wWC44P3BRPoWwpb+QgVE/QkCtYK93Z3Afgqigr3hfcmSwqL1/f01/d2d4EK9173HksK+2jX+MjX9xScCub4ZwX3WAaa1wX7WAaRrH4KhWwF+yIGfD8F9yIGMPxpngr433b3OHcB93r4yi8K+N929zh3AffX+MpLCvjjy0v3ARL3W85I93ITYPf2+VAVE6BwenlwHhNgcnidph9IBk67W8oeE1DLurvIH0gGDvjO9x4B94X3HgP3hfkSdAr4wfdYAfdn91oD92f5IU4K+4jPR/dMEvde1BOg96BPFV9udWpoGlaxacS/qqHAsB5crwVrcICAcxt1gJagHxNgoKCntK4eRgYO+NraChNA90r43lEKE4AxChNAWAq8ZQUOvQr3UPjEFfcNXApH+yQF95YW9w1cCkf7JAUOi9f5BHcB+MMWnwf7Zvk8BT0G+2b9PAV3B/gn1xX7yAb3LviNBQ6L1/jA1wHU4/e+4wP3phaiB4uGlYGgHkr3H2r3FPcLGvcQv8/s7L9H+xBkh2KDXx6DYIJlgWyBbH9rfmt+bIJ2hoF/cxh093bX+xsHpr6erZ26ncgZnsiUxMAa9zk38vst+y03JPs5VpVQn0seoEubX5dzqlMY+xs/Bg7ECgH3Gt/3TN8D9xr4QBW0CvdMtArj1/ykPwcO988O+aoO988O+aoO9zEO2Q6KDooOYg6pDiAObQptCqUK+Ja1CvwtxQqlCvi/tQr8fsUK+HXYCvdc+VgVmAoO+HXYCveb+GAVsApn2Ar3m1IVsAr4YPeMAffI+VgVmAr76haYCg74YPeMAfcv+GB9ClL3jAH3L1J9Cm52+G6vCvxu2/huowpudveK2/corwr7KPtIO/dI+4rb94r3SNv7SPcoowr3b/dyAfdb93ID93v3jxV2oaWAqhuqpZagoB+hoZalqhqqgKV1oB6hdnGWbBtscYB1dR92doBxbBpslnGgdR4Oh/c0Aan3NLP3NLP3NBRwqdUVdgr3XBZ2CvdcFnYKDqkOg8b3KMb3TMb3KMYBsMiryL3Jqsn3I8gD+GiDFbCUCmYbYWl7bHAfqnBpm2EbZmt+cXKsCqSrfrAbta2bqqYfbKate7Ub+775YBVma35xcawKpat+sBuxlAplG/e+/JEVt6ZsYGBwbF9ibKq2tqqqtB/7vvfCFV9vqra2p6q3tqdsYGBvbGAf5/vCFbSqbGBgbGxiX3Cqtramqrcf+23KbwoOswr4WNtwCg6zCvc8+LBxCg73PXb4JXcBs/dYbwoO2Q73+Mf3eMcB90HH9yLHA/gj+CcVo6qXtsAawH+2c6oeqnRrm2MbY2t7bHMfdGx/YFYaVpdgomwebKOre7Mbs6ubqqIfc/cTFT9zZVyDg42Ogh7g90gFkniPdG4a+yIW16OxupOTiYiUHjb7SAWEnoeiqBoO+BF2yMf3b3cB99DJA/gO9/xkCg73+Mf3BsLCxwH3/c0D91v4VxVPk7loxhvQubTW1mOxSHZ6hoB+H5TSBfcQx/tEBnn7TryCBZyanpOgG6ybeGRme3hqcHqbrIQfTX0FDvf4x/DHT/dPEvdPzejNE9j3yvjVFYaGioqEHxO4z/cVBUkGMfs8BX90hXR0Gky8W8vKvLvKHhPY0l2yUx6BTxWmnnlrbHh3cG94nqurnZ2oHw74EXb3rMcB+Fb5ORWi+4VP9y8H+xL7rAXSBg73+Pdq38EB92XH29ED98n5WBVPY2dUa5hzpHwfa3x7b2IaSLZkzs62ss60e6dqmh6lmpijqxrCZK9OHq37ZxWbeotoe3h7emeLe5x7nouum5ybnq+Lm3gIkfcHFW9+fXBwfpmnp5iZpqaYfW8eDvf4909Px/DHEvdbzejNE3j3wfh3FZCQjIySHxO4R/sVBc0G5fc8BZeikaKiGspau0tMWltMHhN4RLlkwx6VxxVweJ2rqp6fpqeeeGtreXluHw6D2/c11eHV9zXbAfcS4wP3E/gdFYqCi3x4GniLfIyCHmEGaUEF4Ab7LKjhMvcXG+nOtuC0H0GzBVBuYW5SGzhXwfZ0H/dvBq3VBfuaBoqUi5qeGp6LmoyUHvd4Bq3VBfuRBvaiv8HeG8S1blCoH9WzBeBiSLYtG/sXNTL7LG4fWAZpQQUO99V29+rFAfTJ9x/J9zjLA/T5FhX76sn36ujF+4xRB/e6++oVyferBsr7OAWxBsr3OAX7q8v4JEYHPvtjPvdjBUgGDnkK9wzXAeTh977mA+T3ZxVInVWvZB5ksLp3xhvs2bnStB+006Df5xr3fkH3CfspLERUNmoe2XcFw6Syp8Eb3LpS+wWYH6xzZJxWGzlJblFYH1lSckM2Gvee93UV2rJcLkx7VWpeH19qX3VTGz9jw+DGm8CruR+5rLeiwhsOoHb5BNcB9d/3hN8D91IW+QT3hP0E3/lQ/Cz9UAcOmgoB+Bz3/BX7QvecBffU1/xcdwb3dPve+3T73gV3+FzX+9QH90L3nAUOpQr4prUK/EzFCqB2+Vh3Affm9wsVNfeiBfstP/MG8PvNBc0G93v5WAU7Bg73Vtf3RtcBmuH4NuED98r4OxXEeFK3ShsuTlEgIMhR6MzEt8SeH1KexF/MG+jIxfb2TsUuSlJfUngf9xf7LRViZLS7fh+7mLK0tBu7qWpTU21qWx/7mvdGFbSyYluYH1t+ZGJiG1ttrMPDqay7Hw77aNf5lJwK9wT41H4K+wT81J4K9zfpX+nD6V/pEhNg9xH3PGsKE1C6Crz3KmsKE5C6Cg73AXbx1efV8XcB97r3+BVXLwX7F0HjBmZKy2bG8QX3ddX7Swa/5wX3F9UzBrDMS7BQJQX7dUEGDovV+Mx3AfiW9zaTCvg9+/oV1fxMxQqL1fjMdwH1+RaWCvw9/AgVQfhM1QcOiQr38xb3ZPfy+2T38gU5Bvtk+/L3ZPvyBfsK9/IV9zP3ofcz+6H7M/uhBQ7ECvcU1wH3H9/3ad8D9x/4QBW0Cvdp/EDf+Iz7vawHyrCryrunfWK3HsXCBb5aUKRGG/sAPkz7Bx9xLz8HDsQK9wzXAfcf3/dr3wP4SvkEFf0E3/lQ+3gHJFdQ+wsfeS8/57QK89cjpAfKoqu6Hg4OoHYBmbb3e7f3e7YUcPjy+P0VloaTgI4e+6LZg46Hi4OIGfuiPQWAiIaDgBr85wd/lYGXjY2LjI4e95/Y958+BYqOjYuNG5eVlZcf+9L37BVNkFakX7hguHPAh8r3es4Y96ZIFYdMc1ZfXmBeVnJNhgj3wwf7p/tiFbs74Vbsgwj7YAf7e0gF96fOFfdgB+yT4MC82wj8MAcO91N294u1qvdmj3cSr8X3U8UT7Pex97wV+1D4KAVO/KbF+CgG91D8KAXI+KZRBvcQ+0cVdp6jgaobqqOVoJ4fsLSL0Wa0CBPcoHhzlWwbbHOBdngfZmKLRbBiCK73ChWfo7GLnnOfdItld3N4dGWLd6J4o4uxnqII9yH7chW1+2BhBw6Dk/iMk/dQkwb7aJMH+QAU9zMVoBMAvQIAAQBAAIIA0wDlAOoBMAE1AToBQgFFAU0BUwF5AaoBsQG5AcIB3gHoAfcCMgI6AkICSgJVAloCZwJyAoECkQKbArADGwMvAzcDmAOyA8sD5AP9BCoEQQRUBGkEdwSiBMUEzgTcBOoFCgUSBRsFKgU5BUYFUwVgBW8FjgWVBZoFtwXsBggGJAYxBjgGUwZiBmsGcgajBr0GzQbZBvAG+gcHBxIHKAc+B0cHTwdiB2cHeQeCB4sHjweVB5kHngelB8MHyQfPB+wICAgiCD0ITAhbCGoIcwh3CJEIqgi4CL8IywjiCPcI/wkGCRwJMgk2CUwJWAlkCWoJcAl2CYoJnQmuCbMJuQm/CcMJ0gnZCd4J7gn+CggKFwomCjUKRApTCmIKawpuCncKgAqHCo0KkgqXCqUKswq3CsQK0QrcCuQK6grvCvMK/QsDCwcLDQsQCxsLJgsxCzwLQQtFC0oLTwtTC1cLWwtlC28Lcwt8C4ILiAuOC5QLmAudC6ELpfcG+PsVPwrbzKrIzgrJpOTQCkEK99xRFaxfm0YtGi17RmpeHl9qX3VUG1RfobdqH2q4e9DpGumb0Ky3HlcKC/cWzxVYuMdy1lAK03TIXr4evl5PpD4KyffOFa+os528G7yzeWeoH6hnmmBYGlkKWmOdr24fbq98tr4avpq2qK8eC/dZ9yUVxLyv4B73AnsGWHpkaXEecmpmfmMbWGuou9sK90EV9xk/yPsQLj5UNHQe1XcFvpu5rsQbz7tsQh91JQf7IzZT+wEozlXk1tKruqsfC2xycmtrpHOqrKOjq6tzpGofCysKIwoO+MD3oRVuCkJQcllfH2BZdU1CGkChTbdaHlq4xXLTG3cKBUhnVWpDGzJOze+GH/geBvuD914V3MFdO5of+78G2pzAutobC+YDIAoL4QMhCgsBseb3/iYKCxUkCgHJ4ffYJwoLIwr3TBYLnhbmBsr3TwX3pgbK+08F5gb7jflQBTcG9yr8QRX7bAb3APfPBQvjA8n3hxU9ok66Xh5eusZ10xvTxqG4uh+6uKLI2Rr4XTP8YwcrUEomJlDM6x74YzMLAdfhAyUKCzMK+y77OAUOdwHJ4/fULQoLfqOjhKMbtrOqt6MfWrIFc3h1f3IbfHeSmHMfCxX3DlwKSPskBQ4V2+DbNgXiwAr3OAVxBgsB8uP3peMD+Kz4whXga0HM+wUbSFd5ZmUfZWd4XFJICgX7G6buQvcbG/ch5tb3KB9gCrPYy7poRaoeC4AK91R3KAoLeQr3VHcqCgsSwgoT3CAKC1EKE+wxChPcWAoOdwEsCgsV9w77JAXNBkj3JAUOEsnh99jhE9whCgtmCtMKkQoTviIKE36ZCgu+ChO8ZQoTfFUKE7xWCgcLQEwKQ6JOuFgeC1hOcjL7Bxr7B6Qyvk0eTr7MbNsbC8sD9wj3KxVWvsxx2RvZzKXAzgrApc7aGtpxzVjAHsBYSqY9Gz1KcFZYH1hWcUk8GjylSL5WHrf39hW0sr2gyBvIvXZisR+yYp5XTRpNeFdkYh5iZVl2ThtOWaC0ZB9ltHi/yRrJnr+xtB4L9wdy5FjIHslYSqo7GztKbE1YHwt4CvdUdy4KC/iUFVtifnBqH2pwemhfGjLHZ/J2Hud3sX1jGlhdcE5HW7DKdB47bQUuqt9W8xvCuZmosB+wqJ6zvRrAbK1cnx5qmnCRYJQIO5tmoLQauLKhu760cFaoHs26BdRjTq84GwuqbL+Lqqqqqou/bKpsqleLbGxsbItXqmwIC62msZy6G7qxemmmH6ZpmV9UGlR9X3BpHgv4n9cV+z34uPc91/w+P/c9/Lj7PT/4PgYLaXBlelwbXGWcrXAfcK19t8Iawpm3pq0eCxqPN6hfw26zd6OEvH++f52Fqn6bhZaFkoQImH6XdW4aOFNfMy9Pv/NwHjlrC+YW+Frf/AL3i/fG3/vG9133+N/8UAYL96/4QhX7+PtCQfhQ1ftO+EIHCxX3Lvc4BTQGOzY74AU0Bvcu+zgFDhtAT3JYXh9eWHROQxoL+I73ehUja1pZNGwK9xVrM9/7F4YK+wimMsFOHk7C0GzfG/cX49/3FasfCxVUtmLDxLW0wsNht1JTYF9THsOMFYbH64uGT5BSK4uQxAgOSgoT8PuCQQYLG9bHpL64H7i+osjTGgsVo56hl6Qbmp+EfqMfC/hq9zVpCgXoYkS5JhtBUHJYYIUKtsZy1Rvw0rnotB8Lnwp393A9Cgu/Cnf3cDAKBwsu3/iMN/tfB0R9U25gHgthbmh2YhtNbK3QH/fhNwu4rLehwhvCt3VerB8LmHNzknMbYGNsXnMfC1h8YG5nHmduY3laGwtgqsVrzBvz9xMVRwpFCg73nhbj96gG93X4PAUqBvtA++T7QPfkBSoG93X8PAUL9yQF+w0GC5sKRgoL9+P3GxX7PfgFBS0G9278ain7ggXfBve/+VjcCgv4ZxVOkLxhzhvQubfSymeySx/f8wWi+15P9gdJOKhiBZSWlo+WG6ybeGRme3lqbHWirocfC4jUcbNUp2afcJNYmFKaYppxmghymn6krRrPvAt6sq2DqBvCu6zCqB9avgVtcmx8Zht0bZOcZB8L9zH3jAX7EgYs+4wFCwHm4wNJCgsVyL3HWfdvQgf7H/uQBXD3Kk4H95AE+xdGBwvy9y0VJ75O8tDMtMewHgt7CveC0/cS1wuICvdwOQoLFayTnJymG6aZenN2g3Z6dh/7EvsvBXL3dcf7CAfV6AWippaqrBrHZbNGTmJkU4IeCxVNcF1sSBsqUdf3APcAxdfszrlsTaYf1KkLoQr3XHegCjffE+hPChPoC7IKqoN6sR8ToGEKCxv7EEHk9033TdXk9xDivFkjqx/epAULpQr4ebUK+/HFCtB2xWG5HrphUKJAGwsVrVv4j/f1absFCxXlB/tl9yD3ZfcgBeUH+7r7WwVNBwsVMQf3Zfsg+2X7IAUxB/e691sFyQcLi9/3i9/3Xd8Lmgr3XHddCgsVZqlssrKpqLKybapkZG1sZB4OywpbCgtfrWm3uq6tt7hmsF5faWhcHgvz17rpvB9IrguD1/c61/cS1wuDfAoLoHb5UHcLg6IKC9f4BNcLuQr3rBawCgXKmKqrvBuopIJ5oB+v1QWeb2iVYBsoUV37E3IfC/cF0vcFC4Pf+LjfCwH4CvhAFfuc/BwFZ/gn1/urB/ef+BwFr/wOPwcL+GD3NBX7ufiwBSv9UOP4sAb3ufywBev5UDMGC+rWqcbDH8TGp+LQCvcHb+JSxh7GU0CpLBsLFaRzt4uko6Ski7lyo3KkX4tycnJzi12kcggLH2BYdU5DGkOhTrZYHlgLGzdGbE5UH1VOcDL7CBoLgxX3JeHy9zH3MTXy+yULoHb3T9/4QXcLegoBC/j8Ffvr/NIFYfh13/v2B/fr+NIFtfxcNwcLm3qTdnEacYN1e3oeenx2g3AbcHaTnHsfCxXDPPewcwf7BVcFRAcLjAoT9rEKCxX7APsW6l7e90MFDl6aZapsHr33RhWcm6CUphumoIJ6mh8LFftLQfdL+0vV90v3S9X7S/dLQQYOEvcD4feI3wtudvm0dwELFeIH+9n3LffZ9y0F4gf8LftYBTMHC6uYpKQfpKWYq7AasH6rcqQepXJrmAsVKwoLFTQH99n7LfvZ+y0FNAf4LfdYBeMHC6T3igX7Bgak+4oFC/cx+4wFywYs94wFC5dEBc8GC4vX+LjXCwH3nuMDC9cBk/tLFXinroG2G+7FufcTpB8LuHywbKoeqmxlm14bXmV7bGwfCwVMfmxrWhtucpSddh9nQQUOewr4jAsS9xX3gguL1ff41QvXXHYL90jb+0j3ijv7ivtIOwcOzwr3WHwKC/es1QEL+JQV+yU1JPsx+zHhJPclC/ie9/MV71jIJEZKYk9mHgtudvm01ApZFdsLtqiuoLQbyappRh/74d8LFfcZ1tf3EPcQQNf7GR8LIBX3JvdtBfsPBiv7bQULH3JyfmtmGmaYa6RxHnILFfcn2j37UPtQPD37Jx8L6Df8jN/3XwfSmcOotR4L2/eK1Ar4PBULYgoO1q0F+1c8UwcLFamkqpqwG6IL8Hb4YHcBC/xA3/hAC/esFdUL3/eF3wsVbKqxfLgbuLGaqqofC/cZsMy/spt1VB77+t8LFWIKC5xkaZNuG1ZZaVRuHwt8nIOhpRqlk6CanB4LB9qzZD4+Y2Q8Hw742Xb3JHcBC3cS8rYKC4Pf+QQLBvsuC3sK+EjX91h3Egux5vf+5gugzQoLoHb4QNcLQQcOEveE9yD7B+UT0AvD97B3Eqz3HU3JC4vf+Px3AfcZ4wML9wycHj+aBTp+ZAuLwcwKC3ebCgv3OHcSC3b4jHcLvh++C/tLdgv3BxoL1fdLdwH3pdUDC1nX97LX97LXEgv3VHcLdwH3otsD96ILoHb4SNcLi9/4qN8L+2p290MLdveMdwEL0woBC9ll2RILH/fcCwUwBgsAAA==) format('opentype')}
 
 :root{
-  --ground:#072716;
-  --ground-2:#08311d;
-  --ground-3:#0b3a24;
-  --linen:#f3f0ec;
-  --linen-dim:#cfd6cf;
-  --sand:#ede5ce;
-  --terracotta:#f05c4a;
-  --terracotta-deep:#dc4f3e;
-  --peach:#fddfc3;
-  --sage:#5f756c;
-  --sage-line:rgba(243,240,236,.14);
-  --olive:#64543e;
+  --ground:#072716;--ground-2:#08311d;
+  --linen:#f3f0ec;--linen-dim:#cfd6cf;--sand:#ede5ce;
+  --terracotta:#f05c4a;--terracotta-deep:#dc4f3e;
+  --peach:#fddfc3;--sage:#5f756c;--olive:#64543e;
+  --line:rgba(243,240,236,.14);--line-dark:rgba(7,39,22,.13);
   --display:'Publico Banner','Iowan Old Style',Georgia,serif;
   --body:'Apercu','Helvetica Neue',Helvetica,Arial,sans-serif;
   --mono:'Apercu Mono',ui-monospace,'SF Mono',Menlo,monospace;
-  --pad:clamp(20px,5.5vw,40px);
-  --maxw:680px;
+  --pad:clamp(20px,5.5vw,40px);--maxw:660px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;color-scheme:dark}
-body{
-  margin:0;background:var(--ground);color:var(--linen);
-  font-family:var(--body);font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
+body{margin:0;background:var(--ground);color:var(--linen);font-family:var(--body);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-p{margin:0 0 1em}
-p:last-child{margin-bottom:0}
-em{font-style:italic}
-strong{font-weight:700}
+p{margin:0 0 1em}p:last-child{margin-bottom:0}
+strong{font-weight:700}em{font-style:italic}
 
-/* ---------- type ---------- */
-.eyebrow{
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--sage);margin:0 0 14px;display:block;
-}
-.d1{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(38px,10.5vw,60px);line-height:1.02;letter-spacing:-.015em;margin:0;text-wrap:balance}
-.d2{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(27px,7vw,38px);line-height:1.12;letter-spacing:-.01em;margin:0 0 .5em;text-wrap:balance}
-.d3{font-size:19px;font-weight:700;line-height:1.3;margin:0 0 .5em;letter-spacing:-.01em}
-.lede{font-size:clamp(17px,4.4vw,20px);line-height:1.5;color:var(--linen)}
-.muted{color:var(--linen-dim)}
-.small{font-size:14.5px;line-height:1.55}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sage);margin:0 0 14px;display:block}
+.d1{font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(34px,9vw,50px);line-height:1.05;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.d2{font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(26px,6.6vw,36px);line-height:1.12;margin:0 0 .45em;text-wrap:balance}
+.lede{font-size:clamp(17px,4.3vw,19px);line-height:1.5}
+.muted{color:var(--linen-dim)}.small{font-size:14.5px;line-height:1.55}
 
-/* ---------- header ---------- */
-.hero{padding-top:clamp(78px,17vw,120px);padding-bottom:clamp(48px,10vw,72px);position:relative;overflow:hidden}
-.hero::after{
-  content:"";position:absolute;left:50%;top:-30%;width:min(560px,120vw);aspect-ratio:1;
+.hero{padding-top:clamp(66px,15vw,100px);padding-bottom:clamp(40px,9vw,60px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:50%;top:-32%;width:min(540px,120vw);aspect-ratio:1;
   transform:translateX(-50%);pointer-events:none;
-  background:radial-gradient(circle,rgba(240,92,74,.13),transparent 62%);
-}
-.hero > *{position:relative;z-index:1}
-.mark{
-  font-family:var(--display);font-style:italic;font-size:22px;letter-spacing:.01em;
-  display:block;margin-bottom:clamp(44px,11vw,70px);
-}
+  background:radial-gradient(circle,rgba(240,92,74,.14),transparent 62%)}
+.hero>*{position:relative;z-index:1}
+.mark{font-family:var(--display);font-style:italic;font-size:21px;display:block;
+  margin-bottom:clamp(38px,10vw,60px)}
 .mark span{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--sage);margin-left:12px;vertical-align:middle}
-.hero .d1{margin-bottom:22px}
-.hero-sub{font-size:17px;color:var(--linen-dim);max-width:30ch;margin:0 0 clamp(34px,8vw,46px)}
-.stats{display:flex;gap:0;border-top:1px solid var(--sage-line);border-bottom:1px solid var(--sage-line)}
-.stat{flex:1;padding:16px 0;text-align:left}
-.stat + .stat{border-left:1px solid var(--sage-line);padding-left:16px}
-.stat b{display:block;font-family:var(--mono);font-size:22px;font-weight:400;
-  font-variant-numeric:tabular-nums;line-height:1;margin-bottom:6px}
-.stat span{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--sage);line-height:1.3;display:block}
+.hero .d1{margin-bottom:20px}
+.hero-sub{font-size:17.5px;color:var(--linen-dim);max-width:34ch;margin:0}
 
-/* ---------- nav ---------- */
-.nav{
-  position:sticky;top:0;z-index:60;background:rgba(7,39,22,.93);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--sage-line);
-}
+.nav{position:sticky;top:0;z-index:60;background:rgba(7,39,22,.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;gap:6px;overflow-x:auto;
   padding:11px var(--pad);scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav a{
-  flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+.nav a{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--sage);text-decoration:none;padding:6px 11px;border-radius:100px;
-  border:1px solid transparent;transition:color .2s,border-color .2s,background .2s;white-space:nowrap;
-}
-.nav a:hover,.nav a:focus-visible{color:var(--linen);border-color:var(--sage-line)}
+  border:1px solid transparent;transition:color .2s,border-color .2s,background .2s;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{color:var(--linen);border-color:var(--line)}
 .nav a[aria-current="true"]{color:var(--ground);background:var(--peach);border-color:var(--peach)}
 
-/* ---------- sections ---------- */
-.sec{padding-top:clamp(56px,13vw,88px);padding-bottom:clamp(56px,13vw,88px);border-top:1px solid var(--sage-line)}
-.sec-head{margin-bottom:clamp(30px,7vw,42px)}
-.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--terracotta);display:block;margin-bottom:12px}
+.sec{padding-top:clamp(50px,11vw,76px);padding-bottom:clamp(50px,11vw,76px);border-top:1px solid var(--line)}
+.sec-head{margin-bottom:clamp(26px,6vw,36px)}
+.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--terracotta);
+  display:block;margin-bottom:11px}
 .light{background:var(--linen);color:var(--ground)}
-.light .muted{color:#4c5b4f}
-.light .eyebrow{color:var(--olive)}
+.light .muted{color:#4c5b4f}.light .eyebrow{color:var(--olive)}
 .light .sec-num{color:var(--terracotta-deep)}
-
-/* ---------- reveal ---------- */
-.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.6,.3,1),transform .7s cubic-bezier(.2,.6,.3,1)}
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.6,.3,1),transform .6s cubic-bezier(.2,.6,.3,1)}
 .js .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
 
-/* ---------- character picker ---------- */
-.chars{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-.char{
-  width:100%;text-align:left;font-family:var(--body);font-size:16px;color:var(--linen);
-  background:var(--ground-2);border:1px solid var(--sage-line);border-radius:3px;
-  padding:17px 18px;cursor:pointer;transition:border-color .25s,background .25s,transform .25s;
-  display:block;position:relative;
-}
-.char:hover{border-color:rgba(253,223,195,.4)}
-.char:focus-visible{outline:2px solid var(--peach);outline-offset:2px}
-.char[aria-pressed="true"]{background:var(--peach);color:var(--ground);border-color:var(--peach)}
-.char-name{font-weight:700;font-size:17px;display:block;margin-bottom:3px}
-.char-age{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:9px}
-.char[aria-pressed="true"] .char-age{color:rgba(7,39,22,.62)}
-.char-line{font-size:14.5px;line-height:1.5;color:var(--linen-dim);margin:0}
-.char[aria-pressed="true"] .char-line{color:rgba(7,39,22,.82)}
-.char-rule{
-  display:block;margin-top:11px;padding-top:11px;border-top:1px solid var(--sage-line);
-  font-size:13.5px;line-height:1.5;color:var(--peach);
-}
-.char[aria-pressed="true"] .char-rule{color:var(--terracotta-deep);border-top-color:rgba(7,39,22,.16)}
-.char-rule b{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:4px}
-.note{
-  margin-top:22px;padding:16px 18px;border-left:2px solid var(--terracotta);
-  background:var(--ground-2);font-size:15px;line-height:1.55;color:var(--linen-dim);border-radius:0 3px 3px 0;
-}
+/* callout */
+.box{padding:17px 18px;border-radius:3px;margin-bottom:26px}
+.box-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  display:block;margin-bottom:8px}
+.box p{margin:0;font-size:15.5px;line-height:1.55}
+.box-peach{background:rgba(253,223,195,.1);border:1px solid rgba(253,223,195,.34)}
+.box-peach .box-k{color:var(--peach)}
+.box-terra{background:rgba(240,92,74,.1);border:1px solid rgba(240,92,74,.3)}
+.box-terra .box-k{color:var(--terracotta)}
 
-/* ---------- filter bar ---------- */
-.filterbar{
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-  padding:13px 16px;background:var(--ground-2);border:1px solid var(--sage-line);
-  border-radius:3px;margin-bottom:26px;font-size:14.5px;
-}
+/* steps */
+.steps{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.step{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.45}
+.step-n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--ground-2);
+  border:1px solid var(--line);display:grid;place-items:center;
+  font-family:var(--mono);font-size:12px;color:var(--peach)}
+
+/* say / not */
+.sn{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.sn-row{display:grid;grid-template-columns:1fr;gap:6px;padding:15px 0;border-bottom:1px solid var(--line)}
+.sn-row:last-child{border-bottom:0}
+.sn-no,.sn-yes{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.45}
+.sn-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  flex:0 0 42px;padding-top:4px}
+.sn-no .sn-k{color:var(--terracotta)}
+.sn-yes .sn-k{color:var(--peach)}
+.sn-no span:last-child{color:var(--linen)}
+.sn-yes span:last-child{color:var(--linen-dim)}
+
+/* job spec */
+.spec{display:flex;flex-direction:column;gap:0}
+.spec-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.45}
+.spec-row:last-child{border-bottom:0}
+.spec-k{flex:0 0 40%;color:var(--sage);font-size:14.5px}
+.spec-v{flex:1}
+.tbd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--terracotta);border:1px dashed rgba(240,92,74,.45);padding:3px 8px;border-radius:3px}
+
+/* problems */
+.probs{display:flex;flex-direction:column;gap:10px}
+.prob{width:100%;text-align:left;font-family:var(--body);color:var(--linen);
+  background:var(--ground-2);border:1px solid var(--line);border-radius:3px;
+  padding:17px 18px;cursor:pointer;transition:border-color .25s,background .25s;display:block}
+.prob:hover{border-color:rgba(253,223,195,.4)}
+.prob:focus-visible{outline:2px solid var(--peach);outline-offset:2px}
+.prob[aria-pressed="true"]{background:var(--peach);color:var(--ground);border-color:var(--peach)}
+.prob b{display:block;font-size:17.5px;margin-bottom:5px;letter-spacing:-.01em}
+.prob span{display:block;font-size:15px;line-height:1.5;color:var(--linen-dim)}
+.prob[aria-pressed="true"] span{color:rgba(7,39,22,.8)}
+
+.filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:13px 16px;
+  background:var(--ground-2);border:1px solid var(--line);border-radius:3px;
+  margin-bottom:24px;font-size:14.5px}
 .filterbar.on{background:rgba(253,223,195,.1);border-color:rgba(253,223,195,.34)}
-.filterbar p{margin:0;flex:1;min-width:190px;color:var(--linen-dim)}
+.filterbar p{margin:0;flex:1;min-width:180px;color:var(--linen-dim)}
 .filterbar b{color:var(--peach)}
-.reset{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  background:none;border:1px solid var(--sage-line);color:var(--linen);
-  padding:7px 13px;border-radius:100px;cursor:pointer;transition:background .2s,color .2s;
-}
+.reset{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  background:none;border:1px solid var(--line);color:var(--linen);padding:7px 13px;
+  border-radius:100px;cursor:pointer;transition:background .2s,color .2s}
 .reset:hover{background:var(--peach);color:var(--ground);border-color:var(--peach)}
 .reset:focus-visible{outline:2px solid var(--peach);outline-offset:2px}
 
-/* ---------- angles ---------- */
-.group{margin-bottom:34px}
-.group-head{
-  font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--terracotta);padding-bottom:9px;border-bottom:1px solid var(--sage-line);margin-bottom:4px;
-  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
-}
-.group-note{font-family:var(--body);font-size:13px;letter-spacing:0;text-transform:none;color:var(--sage);text-align:right}
-.angle{border-bottom:1px solid var(--sage-line)}
-.angle.hide{display:none}
-.angle-btn{
-  width:100%;display:flex;align-items:flex-start;gap:14px;text-align:left;
-  background:none;border:0;color:var(--linen);font-family:var(--body);font-size:17px;
-  padding:17px 0;cursor:pointer;line-height:1.35;
-}
-.angle-btn:focus-visible{outline:2px solid var(--peach);outline-offset:-2px}
-.angle-n{
-  font-family:var(--mono);font-size:12px;color:var(--sage);flex:0 0 26px;
-  padding-top:4px;font-variant-numeric:tabular-nums;transition:color .2s;
-}
-.angle[data-open="true"] .angle-n{color:var(--terracotta)}
-.angle-t{flex:1;font-weight:700;letter-spacing:-.01em}
-.pill{
-  font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;
+/* ideas */
+.grp{margin-bottom:30px}
+.grp-h{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--terracotta);padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:2px}
+.idea{border-bottom:1px solid var(--line)}
+.idea.hide{display:none}
+.idea-btn{width:100%;display:flex;align-items:flex-start;gap:13px;text-align:left;background:none;
+  border:0;color:var(--linen);font-family:var(--body);padding:16px 0;cursor:pointer}
+.idea-btn:focus-visible{outline:2px solid var(--peach);outline-offset:-2px}
+.idea-txt{flex:1}
+.idea-t{display:block;font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin-bottom:4px}
+.idea-c{display:block;font-size:15px;line-height:1.45;color:var(--linen-dim)}
+.pill{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;
   color:var(--ground);background:var(--peach);padding:3px 7px;border-radius:100px;
-  margin-left:8px;vertical-align:2px;white-space:nowrap;display:inline-block;
-}
-.chev{flex:0 0 auto;width:11px;height:11px;border-right:1.5px solid var(--sage);border-bottom:1.5px solid var(--sage);
-  transform:rotate(45deg);margin-top:7px;transition:transform .3s cubic-bezier(.2,.6,.3,1),border-color .2s}
-.angle[data-open="true"] .chev{transform:rotate(225deg) translate(-3px,-3px);border-color:var(--terracotta)}
-.angle-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.2,.6,.3,1)}
-.angle[data-open="true"] .angle-body{grid-template-rows:1fr}
-.angle-inner{overflow:hidden}
-.angle-pad{padding:0 0 22px 40px}
-.row{margin-bottom:13px}
-.row:last-child{margin-bottom:0}
-.row b{
-  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--sage);display:block;margin-bottom:4px;
-}
+  margin-left:7px;vertical-align:2px;white-space:nowrap;display:inline-block}
+.chev{flex:0 0 auto;width:10px;height:10px;border-right:1.5px solid var(--sage);
+  border-bottom:1.5px solid var(--sage);transform:rotate(45deg);margin-top:8px;
+  transition:transform .3s cubic-bezier(.2,.6,.3,1),border-color .2s}
+.idea[data-open="true"] .chev,.acc[data-open="true"] .chev{transform:rotate(225deg) translate(-3px,-3px);border-color:var(--terracotta)}
+.idea-body,.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.6,.3,1)}
+.idea[data-open="true"] .idea-body,.acc[data-open="true"] .acc-body{grid-template-rows:1fr}
+.inner{overflow:hidden}
+.idea-pad{padding:0 0 20px}
+.row{margin-bottom:13px}.row:last-child{margin-bottom:0}
+.row b{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--sage);display:block;margin-bottom:4px}
 .row p{margin:0;font-size:15.5px;line-height:1.55;color:var(--linen-dim)}
-.quote{
-  font-family:var(--display);font-style:italic;font-size:19px;line-height:1.35;
-  color:var(--peach);margin:0;
-}
-.row.warn b{color:var(--terracotta)}
-.row.warn p{color:var(--linen)}
+.quote{font-family:var(--display);font-style:italic;font-size:18.5px;line-height:1.35;color:var(--peach);margin:0}
+.row.warn b{color:var(--terracotta)}.row.warn p{color:var(--linen)}
 
-/* ---------- generic accordion ---------- */
-.acc{border-bottom:1px solid var(--sage-line)}
-.light .acc{border-bottom-color:rgba(7,39,22,.13)}
-.acc-btn{
-  width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
-  background:none;border:0;color:inherit;font-family:var(--body);font-size:17px;font-weight:700;
-  text-align:left;padding:17px 0;cursor:pointer;line-height:1.35;letter-spacing:-.01em;
-}
-.acc-btn:focus-visible{outline:2px solid var(--terracotta);outline-offset:-2px}
-.light .chev{border-color:var(--olive)}
-.acc[data-open="true"] .chev{transform:rotate(225deg) translate(-3px,-3px);border-color:var(--terracotta)}
-.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.2,.6,.3,1)}
-.acc[data-open="true"] .acc-body{grid-template-rows:1fr}
-.acc-pad{padding:0 0 22px;font-size:15.5px;line-height:1.6;color:var(--linen-dim)}
-.light .acc-pad{color:#3f4d42}
-.acc-pad ul{margin:.6em 0;padding-left:1.1em}
-.acc-pad li{margin-bottom:.35em}
+/* words bank */
+.words{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.word{font-size:15px;line-height:1.4;padding:9px 13px;border-radius:3px;
+  background:var(--sand);color:var(--ground)}
 
-/* ---------- hooks ---------- */
-.hook{padding:14px 0;border-bottom:1px solid rgba(7,39,22,.13)}
+/* hooks */
+.hook{padding:13px 0;border-bottom:1px solid var(--line-dark)}
 .hook:last-child{border-bottom:0}
-.hook-ex{font-family:var(--display);font-style:italic;font-size:19px;line-height:1.35;color:var(--ground);margin:0}
+.hook p{font-family:var(--display);font-style:italic;font-size:18.5px;line-height:1.35;
+  color:var(--ground);margin:0}
 
-/* ---------- science ---------- */
-.study{padding:20px 0;border-bottom:1px solid rgba(7,39,22,.13)}
-.study:last-of-type{border-bottom:0}
-.study h4{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:-.01em}
-.study p{margin:0 0 9px;font-size:15.5px;line-height:1.55;color:#3f4d42}
-.cite{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--olive);margin:0;line-height:1.45}
-.says{display:flex;flex-direction:column;gap:9px;margin-top:8px}
-.say{display:flex;gap:11px;padding:14px 15px;border-radius:3px;font-size:15.5px;line-height:1.5}
-.say-y{background:rgba(8,49,29,.07);border-left:2px solid var(--ground-2)}
-.say-k{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;flex:0 0 auto;padding-top:3px}
-.say-y .say-k{color:var(--ground-2)}
+/* facts */
+.facts{display:flex;flex-direction:column;gap:0}
+.fact{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
+.fact:last-child{border-bottom:0}
+.fact-m{color:var(--peach);font-family:var(--mono);font-size:12px;flex:0 0 auto;padding-top:3px}
 
-/* ---------- product info ---------- */
-.light .eyebrow{color:var(--olive)}
-.factbox{
-  padding:18px 19px;background:rgba(253,223,195,.1);border:1px solid rgba(253,223,195,.34);
-  border-radius:3px;margin-bottom:38px;
-}
-.fact-k{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--peach);display:block;margin-bottom:8px;
-}
-.factbox p{margin:0;font-size:15.5px;line-height:1.55;color:var(--linen)}
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.45}
-.step-n{
-  flex:0 0 26px;height:26px;border-radius:50%;background:var(--ground-2);
-  border:1px solid var(--sage-line);display:grid;place-items:center;
-  font-family:var(--mono);font-size:12px;color:var(--peach);
-}
+/* accordions */
+.acc{border-bottom:1px solid var(--line)}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  background:none;border:0;color:inherit;font-family:var(--body);font-size:16.5px;font-weight:700;
+  text-align:left;padding:16px 0;cursor:pointer;line-height:1.35}
+.acc-btn:focus-visible{outline:2px solid var(--peach);outline-offset:-2px}
+.acc-pad{padding:0 0 20px;font-size:15.5px;line-height:1.6;color:var(--linen-dim)}
+.cite{font-family:var(--mono);font-size:11.5px;color:var(--sage);display:block;margin-top:7px}
 
-/* ---------- video examples ---------- */
-.vidgrid{display:grid;grid-template-columns:1fr;gap:22px}
-.vid{margin:0}
-.vid video{
-  width:100%;display:block;background:#000;border-radius:3px;
-  border:1px solid var(--sage-line);aspect-ratio:9/16;object-fit:cover;
-}
-.vid-ph{
-  width:100%;aspect-ratio:9/16;border-radius:3px;display:grid;place-items:center;
-  background:var(--ground-2);border:1px dashed rgba(243,240,236,.22);
-}
-.vid-ph span{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);
-}
-.vid figcaption{padding-top:11px}
-.vid figcaption b{display:block;font-size:16px;letter-spacing:-.01em;margin-bottom:3px}
-.vid figcaption span{font-size:14.5px;line-height:1.5;color:var(--linen-dim)}
-@media (min-width:620px){.vidgrid{grid-template-columns:1fr 1fr}}
+.foot{padding-top:clamp(48px,11vw,70px);padding-bottom:clamp(56px,13vw,84px);
+  border-top:1px solid var(--line);text-align:center}
+.foot p{color:var(--linen-dim);font-size:16px;max-width:34ch;margin:0 auto}
+.foot .mark{margin:clamp(32px,8vw,46px) 0 0;font-size:18px;opacity:.5}
 
-/* ---------- footer ---------- */
-.foot{padding-top:clamp(56px,12vw,80px);padding-bottom:clamp(60px,14vw,90px);border-top:1px solid var(--sage-line);text-align:center}
-.foot .d2{margin-bottom:.35em}
-.foot p{color:var(--linen-dim);font-size:16px;max-width:34ch;margin-left:auto;margin-right:auto}
-.foot .mark{margin:clamp(38px,9vw,54px) 0 0;font-size:19px;opacity:.5}
-
-.totop{
-  position:fixed;right:16px;bottom:16px;z-index:70;width:44px;height:44px;border-radius:50%;
-  background:var(--peach);color:var(--ground);border:0;cursor:pointer;display:grid;place-items:center;
-  opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;transform:translateY(8px);
-  box-shadow:0 6px 20px rgba(0,0,0,.3);
-}
+.totop{position:fixed;right:16px;bottom:16px;z-index:70;width:44px;height:44px;border-radius:50%;
+  background:var(--peach);border:0;cursor:pointer;display:grid;place-items:center;opacity:0;
+  pointer-events:none;transition:opacity .3s,transform .3s;transform:translateY(8px);
+  box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .totop.show{opacity:1;pointer-events:auto;transform:none}
 .totop:focus-visible{outline:2px solid var(--linen);outline-offset:2px}
-.totop i{display:block;width:9px;height:9px;border-left:2px solid var(--ground);border-top:2px solid var(--ground);transform:rotate(45deg);margin-top:3px}
-
-@media (min-width:700px){
-  body{font-size:17.5px}
-  .angle-pad{padding-left:40px}
-}
+.totop i{display:block;width:9px;height:9px;border-left:2px solid var(--ground);
+  border-top:2px solid var(--ground);transform:rotate(45deg);margin-top:3px}
+@media (min-width:560px){.sn-row{grid-template-columns:1fr 1fr;gap:16px}}
 </style>
 
 <script>document.documentElement.classList.add("js");</script>
 
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
-    <a href="#product">The product</a>
-    <a href="#who">Our clients</a>
-    <a href="#angles">16 angles</a>
-    <a href="#hooks">Hooks</a>
-    <a href="#examples">Examples</a>
+    <a href="#start">Start here</a>
+    <a href="#rules">Say this</a>
+    <a href="#job">The job</a>
+    <a href="#problem">Pick a problem</a>
+    <a href="#ideas">Video ideas</a>
+    <a href="#words">What to say</a>
+    <a href="#facts">Facts</a>
   </div>
 </nav>
 
 <header class="hero wrap">
   <span class="mark rv">Li&#225;o<span>Creator Pack</span></span>
-  <h1 class="d1 rv">Everything you need to make something good.</h1>
-  <p class="hero-sub rv">Pick the character that is genuinely you. Pick an angle. Make it yours.</p>
-  <div class="stats rv">
-    <div class="stat"><b>5</b><span>Characters</span></div>
-    <div class="stat"><b>16</b><span>Angles</span></div>
-    <div class="stat"><b>9</b><span>Ways to open</span></div>
-  </div>
+  <h1 class="d1 rv">You are making a video about what heartburn actually feels like.</h1>
+  <p class="hero-sub rv" style="margin-top:20px">Pick one real moment. Show what it costs you. Then show where Liao fits.</p>
 </header>
 
-<section class="sec wrap">
-  <p class="lede rv">Liao is a daily digestive ritual. Not a pill you take when things go wrong. The calm moment you reach for around food.</p>
-  <p class="lede muted rv" style="margin-top:1em">Coffee is for focus. Liao is for eating.</p>
-</section>
-
-<section class="sec wrap" id="product">
+<section class="sec wrap" id="start">
   <div class="sec-head rv">
     <span class="sec-num">01</span>
-    <h2 class="d2">The product</h2>
+    <h2 class="d2">Start here</h2>
   </div>
 
   <div class="rv">
-    <div class="factbox">
-      <span class="fact-k">Call it Liao</span>
+    <p class="lede">Liao is a thick herbal syrup you mix into warm water and drink before meals.</p>
+    <p class="lede muted" style="margin-top:1em">It is for people who get burning in the chest, acid coming back up into the throat, burping after every meal, bloating, that heavy feeling like food is just sitting there, and who lie awake at 2am on fire.</p>
+  </div>
+
+  <div class="rv" style="margin-top:34px">
+    <div class="box box-peach">
+      <span class="box-k">Call it Liao</span>
       <p>On camera, always say <strong>Liao</strong>. Never say Reflux Relief, even if that is what is printed on the bottle you were sent. The name is changing and we do not want the old one in your video.</p>
     </div>
   </div>
 
   <div class="rv">
-    <span class="eyebrow">What it is</span>
-    <p class="lede" style="margin-bottom:1.2em">A concentrated herbal syrup that helps with heartburn, acid reflux, digestion, bloating, and supporting the stomach.</p>
-  </div>
-
-  <div class="rv">
-    <span class="eyebrow">How to take it</span>
+    <span class="eyebrow">The one shot we need in almost every video</span>
     <div class="steps">
-      <div class="step"><span class="step-n">1</span><span>Mix one spoon into a cup of warm water.</span></div>
-      <div class="step"><span class="step-n">2</span><span>Drink it 30 minutes before your meal.</span></div>
-      <div class="step"><span class="step-n">3</span><span>Twice a day. Before breakfast and before dinner.</span></div>
+      <div class="step"><span class="step-n">1</span><span>Pour one spoon into a cup of warm water.</span></div>
+      <div class="step"><span class="step-n">2</span><span>Stir it. Show how thick it is.</span></div>
+      <div class="step"><span class="step-n">3</span><span>Drink it 30 minutes before you eat. Twice a day.</span></div>
     </div>
-    <p class="note" style="margin-top:20px">That is the ritual, and it is the single most valuable thing you can put on camera. The pour, the stir into warm water, the pause before you eat. Show it in almost everything you make.</p>
-  </div>
-
-  <div class="rv" style="margin-top:44px">
-    <span class="eyebrow">The selling points</span>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">A doctor made it<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">Dr. Lyda Kermani, Doctor of Acupuncture and Chinese Medicine. She built it for her father, who had heartburn for 40 years and tried everything. She spent two years testing formulas until one actually worked. Over 40 US clinicians now carry Liao.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">Built on a 1,800 year old formula<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">The formula is called <strong>Xuanfu Daizhe Tang</strong>, Inula and Hematite Decoction. It comes from the <em>Shang Han Lun</em>, written around 200 CE, one of the foundational texts of Chinese medicine. It has been used for 1,800 years for exactly this: settling the stomach and stopping things coming back up. Liao takes the three core herbs and concentrates them.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">Four ingredients, chosen to work together<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad"><ul><li><strong>Inula Flower</strong>, Xuan Fu Hua, supports healthy downward digestive flow</li><li><strong>Licorice Root</strong>, Gan Cao, soothes the stomach lining</li><li><strong>Hematite</strong>, Dai Zhe Shi, helps calm digestive disturbances at the source</li><li><strong>IMO prebiotic</strong> to feed good gut bacteria</li></ul>That is the whole label. The point is not the list, it is that these were picked to work together. Most natural products throw single herbs in a bottle and hope. Slippery elm alone. DGL alone. Aloe alone. They do not interact. That is why they did nothing for you.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">10 to 1 concentration, double the standard<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">Industry standard is 5 to 1. Liao is 10 to 1. That is $300 of raw herbs and 2.6 pounds of herbs concentrated into one 120ml bottle. Because it is a thick syrup and not a capsule, it coats and absorbs fast.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">It works on the system, not the symptom<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">Antacids neutralize acid for an hour. Liao supports your digestion so things work better underneath. That is why it takes days rather than minutes, and it is also why you are not reaching for it every hour.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">Clean label, third party tested<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">No sugar. No artificial sweeteners. No colors or flavors. No preservatives or fillers. No alcohol. No gluten. No GMOs. 100% vegan. Made in an FDA registered, cGMP certified facility and third party tested for purity, potency, heavy metals, and microbiology.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">About $1.50 a day<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">On the 3 month plan. Less than a coffee. One bottle is 60 servings, a 30 day supply.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">30 day money back guarantee<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">Liao comes with a 30 day money back guarantee. Return shipping is the customer's responsibility. Subscriptions can be paused or cancelled any time from the customer account, no need to contact anyone.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">What it tastes like<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">Honey like consistency, gentle herbal tea flavor, a licorice note. Be honest about it on camera. Honest sells better than polished.</div></div></div></div>
-    <div class="acc" data-open="false"><button class="acc-btn" aria-expanded="false">How long it takes to notice a difference<span class="chev"></span></button><div class="acc-body"><div class="acc-inner"><div class="acc-pad">This is the wording from our website, and it is the wording to use. "Experiences vary. Some customers notice changes in digestive comfort early, while others require more consistent use. One or two servings are not enough to judge Liao. Pay attention to your digestion and comfort over several weeks."<br><br>Say it plainly like that. Overpromising a timeline is what causes refunds.</div></div></div></div>
+    <p class="muted small">Film the pour and the stir close up. It is the single most useful thing you can give us, and it is what makes a video look like a real routine instead of an ad.</p>
   </div>
 </section>
 
-<section class="sec light" id="science">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="sec-num">02</span>
-      <h2 class="d2">The research</h2>
-      <p class="muted">You can name the formula and point to real published research. Here is what exists.</p>
+<section class="sec wrap" id="rules">
+  <div class="sec-head rv">
+    <span class="sec-num">02</span>
+    <h2 class="d2">Say this, not that</h2>
+    <p class="muted">Six rules. Break one and we cannot use the video, so it is worth 30 seconds.</p>
+  </div>
+  <div class="rv sn">
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>Cured, cures, treats, heals, fixes.</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>Helps with. Settles. Soothes. Calms it down.</span></div>
     </div>
-    <div class="rv">
-      <div class="study">
-        <h4>Human trial on the formula, 2025</h4>
-        <p>72 patients with acid reflux, randomly split into two groups of 36. The group taking Xuanfu Daizhe Decoction did better than the control group on heartburn, acid reflux, and overall symptom scores. Scope results were better too. All statistically significant.</p>
-        <p class="cite">Chin J Integr Tradit West Med Dig, 2025, 33(6): 577-581</p>
-      </div>
-      <div class="study">
-        <h4>How it works, at the cellular level, 2024</h4>
-        <p>An animal study in the Journal of Ethnopharmacology found the formula protected the esophageal lining and brought down inflammatory markers. It identified the specific biological pathway involved.</p>
-        <p class="cite">J Ethnopharmacol, 2024. PMID 38342154</p>
-      </div>
-      <div class="study">
-        <h4>The big picture, 2018</h4>
-        <p>A meta analysis pooled 14 randomized controlled trials covering 1,444 patients. Chinese herbal medicine alone beat acid blockers alone on total effectiveness, with lower relapse and fewer side effects.</p>
-        <p class="cite">Evid Based Complement Alternat Med, 2018. PMC5994284</p>
-      </div>
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>Tell anyone to stop, cut down, or come off their medication.</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>"I take it alongside." And "talk to your doctor."</span></div>
     </div>
-    <div class="rv" style="margin-top:30px">
-      <span class="eyebrow">How to say it</span>
-      <div class="says">
-        <div class="say say-y"><span class="say-k">Say</span><span>"It is based on a 1,800 year old formula called Xuanfu Daizhe Tang. There is published research on it, including a 2025 trial in 72 reflux patients."</span></div>
-        <div class="say say-y"><span class="say-k">Say</span><span>"A meta analysis of 14 trials and 1,444 patients found Chinese herbal medicine outperformed acid blockers on reflux, with fewer side effects."</span></div>
-      </div>
-      <p class="small muted" style="margin-top:18px">Always say Liao is <em>based on</em> the formula, never that it is the formula. The classical version has seven herbs. Liao takes the three that do the work, concentrates them 10 to 1, and adds a prebiotic. "Based on a formula with published research behind it" is true, and it sells just as well.</p>
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>Clinically proven. Or that it beats any medication.</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>"Based on a formula with published research behind it."</span></div>
     </div>
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>Promise a timeline. No "gone in 3 days."</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>"It took me a few weeks." Your real experience only.</span></div>
+    </div>
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>That Tums or antacids damage your body.</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>They wear off. They cover it up instead of settling it.</span></div>
+    </div>
+    <div class="sn-row">
+      <div class="sn-no"><span class="sn-k">Never</span><span>Wear a lab coat or play a doctor.</span></div>
+      <div class="sn-yes"><span class="sn-k">Say</span><span>"A doctor of Chinese medicine made it." Just be yourself.</span></div>
+    </div>
+  </div>
+  <div class="rv" style="margin-top:24px">
+    <p class="muted small">If you are not sure whether something is safe to say, ask before you film. We would much rather answer a question than lose a good video.</p>
   </div>
 </section>
 
-<section class="sec wrap" id="who">
+<section class="sec wrap" id="job">
   <div class="sec-head rv">
     <span class="sec-num">03</span>
-    <h2 class="d2">Our clients</h2>
-    <p class="muted">Five kinds of people buy Liao. Pick the one that is genuinely you, and the angles below will filter to yours. That honesty is what makes content sell.</p>
+    <h2 class="d2">The job</h2>
   </div>
-
-  <div class="chars rv">
-    <button class="char" data-char="fast" aria-pressed="false">
-      <span class="char-name">The Fast Life</span>
-      <span class="char-age">30 to 50</span>
-      <p class="char-line">Works a lot. No time to cook. Eats out or orders in almost every day, always in a rush. Wants stomach support so digestion and heartburn stop getting in the way, and wants to feel good even when life moves too fast.</p>
-      <span class="char-rule"><b>What you are selling</b>Live full speed and still feel good.</span>
-    </button>
-    <button class="char" data-char="indulger" aria-pressed="false">
-      <span class="char-name">The Disciplined Indulger</span>
-      <span class="char-age">30 to 50</span>
-      <p class="char-line">Eats clean all week, works out, has their health handled. But the big dinner out always costs them. Bloating, heartburn, a ruined night. Wants to order everything, enjoy the whole meal, and still feel good after. Refuses to be the one picking at a salad.</p>
-      <span class="char-rule"><b>What you are selling</b>Eat the whole dinner. No payback.</span>
-    </button>
-    <button class="char" data-char="struggler" aria-pressed="false">
-      <span class="char-name">The Everyday Struggler</span>
-      <span class="char-age">35 to 55</span>
-      <p class="char-line">Heartburn most days. Scared of food. Says no to dinners out, gave up the foods they love, and some nights wakes up at 2am burning. Exhausted by it. Wants to eat a normal meal without paying for it and sleep through the night again.</p>
-      <span class="char-rule"><b>What you are selling</b>Eat again without the fear.</span>
-    </button>
-    <button class="char" data-char="med" aria-pressed="false">
-      <span class="char-name">The Med Companion</span>
-      <span class="char-age">45 to 60</span>
-      <p class="char-line">Has been on acid blockers for years. They help, but it never felt like a real answer, and the idea of stopping is scary. Wants something natural to take alongside that supports the stomach underneath instead of only blocking acid.</p>
-      <span class="char-rule"><b>Hard rule</b>Liao sits alongside. It never replaces. Always say "talk to your doctor."</span>
-    </button>
-    <button class="char" data-char="silent" aria-pressed="false">
-      <span class="char-name">The Silent One</span>
-      <span class="char-age">35 to 55</span>
-      <p class="char-line">Clears their throat every single morning. Phlegm, a lump in the throat, a voice that goes rough by the afternoon. No heartburn at all, so nobody ever said the word reflux. Doctors found nothing. Just wants their throat to calm down.</p>
-      <span class="char-rule"><b>Hard rule</b>Speak to the symptom, never the diagnosis. Always say "talk to your doctor."</span>
-    </button>
+  <div class="rv spec">
+    <div class="spec-row"><span class="spec-k">How many videos</span><span class="spec-v"><span class="tbd">to fill in</span></span></div>
+    <div class="spec-row"><span class="spec-k">How long</span><span class="spec-v"><span class="tbd">to fill in</span></span></div>
+    <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Vertical 9:16, filmed on your phone</span></div>
+    <div class="spec-row"><span class="spec-k">Due</span><span class="spec-v"><span class="tbd">to fill in</span></span></div>
+    <div class="spec-row"><span class="spec-k">Send to</span><span class="spec-v"><span class="tbd">to fill in</span></span></div>
+    <div class="spec-row"><span class="spec-k">Raw files</span><span class="spec-v">Send the unedited clips too. We often recut them.</span></div>
+    <div class="spec-row"><span class="spec-k">Usage</span><span class="spec-v"><span class="tbd">to fill in</span></span></div>
   </div>
-
-  <p class="note rv">Most creator content so far has been the Everyday Struggler and the Med Companion. We need much more of the first two. If you are a Fast Life or a Disciplined Indulger, lead with that.</p>
 </section>
 
-<section class="sec wrap" id="angles">
+<section class="sec wrap" id="problem">
   <div class="sec-head rv">
     <span class="sec-num">04</span>
-    <h2 class="d2">The angle menu</h2>
-    <p class="muted">Sixteen concepts that sell. Pick one and run.</p>
+    <h2 class="d2">Pick the problem you are showing</h2>
+    <p class="muted">One video, one problem. Tap the one you can talk about honestly and the ideas below will narrow to it.</p>
+  </div>
+  <div class="probs rv">
+    <button class="prob" data-p="burn" aria-pressed="false">
+      <b>The burning</b>
+      <span>Burning in the chest or throat after eating. Acid coming back up. A sour taste. Waiting hours for it to settle.</span>
+    </button>
+    <button class="prob" data-p="sleep" aria-pressed="false">
+      <b>Not being able to lie down</b>
+      <span>Exhausted but afraid to lie flat. Two pillows. Sitting up in bed. Waking at 2am with acid in your chest.</span>
+    </button>
+    <button class="prob" data-p="food" aria-pressed="false">
+      <b>Being scared of food</b>
+      <span>Wanting the pizza, the wine, the coffee, the dinner out, and already knowing what happens after.</span>
+    </button>
+    <button class="prob" data-p="bloat" aria-pressed="false">
+      <b>Bloating and burping</b>
+      <span>Burping after every meal. Feeling swollen and overly full. Food sitting there like it has not moved. Unbuttoning your jeans.</span>
+    </button>
+    <button class="prob" data-p="life" aria-pressed="false">
+      <b>It runs your whole life</b>
+      <span>Antacids in the car, the desk and the nightstand. Planning what time you eat. Tried everything. Always in the back of your mind.</span>
+    </button>
+  </div>
+</section>
+
+<section class="sec wrap" id="ideas">
+  <div class="sec-head rv">
+    <span class="sec-num">05</span>
+    <h2 class="d2">Video ideas</h2>
+    <p class="muted">Pick one. Tap it for the shots and an example opening line. Do not read the example out, say your own version.</p>
   </div>
 
-  <div class="filterbar rv" id="filterbar">
-    <p id="filtertext">Showing all 16 angles. Pick a character above to narrow it down.</p>
-    <button class="reset" id="reset" hidden>Show all 16</button>
+  <div class="filterbar rv" id="fbar">
+    <p id="ftext">Showing all 18 ideas. Pick a problem above to narrow them down.</p>
+    <button class="reset" id="reset" hidden>Show all</button>
   </div>
 
-  <div id="anglelist">
-    <div class="group" data-group>
-      <div class="group-head"><span>A &#183; Lifestyle and identity</span><span class="group-note">Our biggest gap</span></div>
+  <div id="ideas-list">
+    <div class="grp" data-grp>
+      <div class="grp-h">The burning</div>
 
-      <div class="angle" data-open="false" data-chars="struggler">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">01</span><span class="angle-t">The Meal I Used to Skip</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you going back to the exact restaurant or dish you gave up, eating it, and being completely fine after.</p></div>
-          <div class="row"><b>Who</b><p>The Everyday Struggler</p></div>
-          <div class="row"><b>Film</b><p>You at the exact place or dish you stopped ordering. Go there. Order it. Eat it on camera.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I have not ordered pad thai in two years. Tonight I did."</p></div>
-          <div class="row"><b>Why it lands</b><p>A specific dish beats a symptom every time. Everyone watching remembers the thing they quietly gave up.</p></div>
+      <div class="idea" data-open="false" data-p="burn" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Burning Starts Later<span class="pill">Make this first</span></span><span class="idea-c">The meal was fine. An hour later it is not.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Eat a normal meal, relaxed. Cut to an hour later. Hand on your chest or throat, sitting forward, uncomfortable. Then the Liao routine.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"My heartburn never hit while I was eating. It showed up an hour later and ruined the rest of my night."</p></div>
         </div></div></div>
       </div>
 
-      <div class="angle" data-open="false" data-chars="anyone fast">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">02</span><span class="angle-t">My Daily Ritual</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you taking Liao as a daily ritual to manage heartburn naturally.</p></div>
-          <div class="row"><b>Who</b><p>Anyone, strongest for The Fast Life</p></div>
-          <div class="row"><b>Film</b><p>The 30 seconds before you eat. Kettle, warm water, the stir, the pause, then the meal. Slow, quiet, no rush.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"This is the two minutes I take before dinner now."</p></div>
-          <div class="row"><b>Why it lands</b><p>This is the whole brand in one shot. Liao is a habit you keep, not a pill you take when things go wrong.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="indulger" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">03</span><span class="angle-t">Eat It Anyway<span class="pill">Needed now</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you taking Liao before a big dinner, then eating everything you want without holding back.</p></div>
-          <div class="row"><b>Who</b><p>The Disciplined Indulger</p></div>
-          <div class="row"><b>Film</b><p>The big meal you have been looking forward to. Pizza, the tasting menu, the birthday dinner. You take your Liao and you go in.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I know exactly what this meal is going to do to me. I am eating all of it."</p></div>
-          <div class="row"><b>Why it lands</b><p>Permission, not restriction. Most of this category tells people what to give up. We do the opposite.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="indulger fast" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">09</span><span class="angle-t">Get Ready With Me for Dinner Out<span class="pill">Needed now</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Get ready with me video where taking Liao is just part of the routine before going out to eat.</p></div>
-          <div class="row"><b>Who</b><p>The Disciplined Indulger or The Fast Life</p></div>
-          <div class="row"><b>Film</b><p>Standard GRWM. Getting ready for the night out. Somewhere between the outfit and the door, you take your Liao without making a thing of it.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"Getting ready for dinner with people I have not seen in a year."</p></div>
-          <div class="row"><b>Why it lands</b><p>GRWM is one of the highest performing formats we have. The product being casual inside a normal routine is the entire point. Do not stop the video to explain it.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="fast">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">10</span><span class="angle-t">A Day of Eating With Liao</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of a full day of eating, with Liao before the meals, showing how it fits a busy life.</p></div>
-          <div class="row"><b>Who</b><p>The Fast Life</p></div>
-          <div class="row"><b>Film</b><p>Morning to night across a real day. Rushed breakfast, sad desk lunch, the actual dinner. Liao shows up twice, briefly, without commentary.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"Realistically, here is how I eat on a Tuesday."</p></div>
-          <div class="row"><b>Why it lands</b><p>It makes Liao furniture. Something that lives in your bag and on your counter, not a treatment.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="struggler">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">11</span><span class="angle-t">The Foodie Is Back</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you cooking and eating the food you love again, after months of avoiding it.</p></div>
-          <div class="row"><b>Who</b><p>The Everyday Struggler</p></div>
-          <div class="row"><b>Film</b><p>You cooking or eating the food you love, with real joy. This is a comeback story, not a symptom report.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I used to plan the whole trip around restaurants. I am her again."</p></div>
-          <div class="row"><b>Why it lands</b><p>Identity beats symptoms. "I am a foodie again" is a much bigger idea than "my heartburn is better."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="fast indulger" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">12</span><span class="angle-t">Never Travel Without It<span class="pill">Needed now</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you packing Liao and using it abroad, eating new food without worrying about it.</p></div>
-          <div class="row"><b>Who</b><p>The Fast Life or The Disciplined Indulger</p></div>
-          <div class="row"><b>Film</b><p>Packing it. Then using it abroad or on the road, with the new food in frame.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"Three things always go in my bag. This is the one nobody expects."</p></div>
-          <div class="row"><b>Why it lands</b><p>Travel is when routine collapses and food gets unpredictable. Nobody is making content about this and everybody lives it.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="fast anyone">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">15</span><span class="angle-t">Clean Enough for Every Day</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you reading the four ingredients out loud, next to a competitor label with twenty.</p></div>
-          <div class="row"><b>Who</b><p>The Fast Life, or anyone label conscious</p></div>
-          <div class="row"><b>Film</b><p>Read the actual ingredients out loud. Four things. Then flip a competitor label with twenty.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"If I am taking something twice a day forever, I am reading the label."</p></div>
-          <div class="row"><b>Why it lands</b><p>Clean label is what makes a daily ritual reasonable. Nobody commits daily to something full of junk.</p></div>
+      <div class="idea" data-open="false" data-p="burn">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Might Not Be Your Throat<span class="pill">Nobody has made this</span></span><span class="idea-c">Throat clearing and phlegm, with no heartburn at all.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Straight to camera. List it: clearing your throat every morning, the lump feeling, phlegm, a voice that goes rough by the afternoon. No chest burn at all. Then say it can be reflux you cannot feel.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"If you clear your throat every single morning, this might not be a throat thing."</p></div>
+          <div class="row warn"><b>Careful</b><p>Describe the symptoms, never diagnose anyone. Say "talk to your doctor."</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="group" data-group>
-      <div class="group-head"><span>B &#183; The struggle</span><span class="group-note">Name it, then land on relief</span></div>
+    <div class="grp" data-grp>
+      <div class="grp-h">Not being able to lie down</div>
 
-      <div class="angle" data-open="false" data-chars="struggler">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">07</span><span class="angle-t">The 2am Test</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you showing the nights you woke up burning, then sleeping through after taking Liao every day.</p></div>
-          <div class="row"><b>Who</b><p>The Everyday Struggler</p></div>
-          <div class="row"><b>Film</b><p>The honest version of the bad night. Sitting up, propped on pillows, awake. Then the after: actually asleep, actually rested.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"For two years I slept sitting up. Here is what changed."</p></div>
-          <div class="row"><b>Why it lands</b><p>Night reflux is the most physical, most relatable version of this problem. It costs people sleep, and sleep is something everyone protects.</p></div>
+      <div class="idea" data-open="false" data-p="sleep" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Afraid to Lie Down<span class="pill">Make this first</span></span><span class="idea-c">The dread that starts after dinner, not during it.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Checking the clock after dinner. Stacking pillows. Sitting upright in bed, exhausted, still awake. Then the evening Liao.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"The worst part was not dinner. It was knowing I could not lie down for three hours afterwards."</p></div>
         </div></div></div>
       </div>
 
-      <div class="angle" data-open="false" data-chars="silent" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">16</span><span class="angle-t">It Might Not Be Your Throat<span class="pill">Nobody has made this</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you listing your throat symptoms and revealing they can come from silent reflux.</p></div>
-          <div class="row"><b>Who</b><p>The Silent One</p></div>
-          <div class="row"><b>Film</b><p>Straight to camera. List the symptoms: throat clearing every morning, the lump feeling, phlegm, a voice that goes rough. No heartburn at all. Then the reveal that this can be reflux you cannot feel.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"If you clear your throat every single morning, this might not be a throat thing."</p></div>
-          <div class="row"><b>Why it lands</b><p>This person does not know she has reflux, so every heartburn ad on earth slides right past her. A throat symptom hook stops her instantly.</p></div>
-          <div class="row warn"><b>Careful here</b><p>Describe the symptom, never diagnose. Always say "talk to your doctor."</p></div>
+      <div class="idea" data-open="false" data-p="sleep">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The 2am Test</span><span class="idea-c">Waking up with acid in your chest, night after night.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>The honest version of the bad night. Awake, propped up, standing at the kitchen sink at 2am. Then the after: actually asleep, actually rested.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I used to get up four or five times a night. Last week I slept straight through."</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="group" data-group>
-      <div class="group-head"><span>C &#183; Proof and objections</span><span class="group-note">These do the convincing</span></div>
+    <div class="grp" data-grp>
+      <div class="grp-h">Bloating and burping</div>
 
-      <div class="angle" data-open="false" data-chars="anyone">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">08</span><span class="angle-t">Why Random Herbs Failed You</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you showing every natural product that did nothing for you, and why three herbs together work differently.</p></div>
-          <div class="row"><b>Who</b><p>Anyone who tried natural products that did nothing</p></div>
-          <div class="row"><b>Film</b><p>Show the graveyard. The slippery elm, the DGL, the ginger capsules, the aloe. All the bottles you bought that did not work.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I spent about $300 on this shelf before I understood what I was doing wrong."</p></div>
-          <div class="row"><b>Why it lands</b><p>It explains the failure instead of dismissing it. Single herbs sit next to each other and do nothing. Liao's three were chosen to make each other work. Real reasons convert skeptics.</p></div>
+      <div class="idea" data-open="false" data-p="bloat" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Constant Burping<span class="pill">Make this first</span></span><span class="idea-c">The symptom nobody makes content about.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Eating with someone. Trying to hold a burp in. The awkward pause. Loosening your waistband under the table. Then the Liao routine before the next meal.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"Nobody talks about how embarrassing it is to burp through an entire dinner with someone."</p></div>
         </div></div></div>
       </div>
 
-      <div class="angle" data-open="false" data-chars="anyone" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">14</span><span class="angle-t">I Was the Skeptic<span class="pill">Needed now</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you saying you never believed a natural product would work, then what actually happened.</p></div>
-          <div class="row"><b>Who</b><p>Anyone</p></div>
-          <div class="row"><b>Film</b><p>Own the doubt properly. You did not think a herbal syrup would do anything. Say why. Then say what actually happened, including how long it took.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I fully expected this to be nothing."</p></div>
-          <div class="row"><b>Why it lands</b><p>Leading with your own doubt buys enormous trust. Never skip to the good part.</p></div>
+      <div class="idea" data-open="false" data-p="bloat">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Just Sits There</span><span class="idea-c">A normal meal that feels like it never moved.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>A small, ordinary meal. Then you afterwards, rubbing the top of your stomach, sitting instead of getting on with your evening. Show the waistband.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I could eat a normal lunch and feel like it was still sitting there at nine at night."</p></div>
         </div></div></div>
       </div>
 
-      <div class="angle" data-open="false" data-chars="anyone">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">06</span><span class="angle-t">1,800 Years in a Bottle</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you explaining this is a 1,800 year old Chinese formula, made by a doctor, concentrated 10 times.</p></div>
-          <div class="row"><b>Who</b><p>Anyone, strongest for people who want a reason</p></div>
-          <div class="row"><b>Film</b><p>The story. A formula from a Chinese medical text written around 200 CE, still in clinical use, now concentrated 10 to 1 by a doctor.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"This is based on a formula older than most countries."</p></div>
-          <div class="row"><b>Why it lands</b><p>Heritage plus a doctor plus concentration is our credibility stack. Read The Science below for how to say the research part safely.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="angle" data-open="false" data-chars="med">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">04</span><span class="angle-t">Best Friend, Not a Replacement</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you talking about years on acid blockers and the natural thing you now take alongside them.</p></div>
-          <div class="row"><b>Who</b><p>The Med Companion</p></div>
-          <div class="row"><b>Film</b><p>Calm, honest, sitting down. Your history with acid blockers, what worries you, and what you added alongside them.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I have been on my acid blocker for six years. I am not coming off it today."</p></div>
-          <div class="row"><b>Why it lands</b><p>This audience is scared and has been lectured at. Reassurance beats persuasion.</p></div>
-          <div class="row warn"><b>Read this twice</b><p>Never name a prescription drug as something Liao replaces. Never suggest anyone reduce or stop medication. Always say "talk to your doctor." This angle carries the tightest rules in the pack.</p></div>
+      <div class="idea" data-open="false" data-p="bloat">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">I Thought That Was Normal</span><span class="idea-c">Telling people what is not actually normal after eating.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Straight to camera. Separate the two: feeling satisfied after a meal, versus swollen, burping, burning, heavy. Then say which one you were living with.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I genuinely thought everyone felt swollen and uncomfortable after eating."</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="group" data-group>
-      <div class="group-head"><span>D &#183; Product and demo</span><span class="group-note">Great for a first piece</span></div>
+    <div class="grp" data-grp>
+      <div class="grp-h">Being scared of food</div>
 
-      <div class="angle" data-open="false" data-chars="anyone" data-need="1">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">13</span><span class="angle-t">First Sip Reaction<span class="pill">Needed now</span></span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you trying Liao for the first time and reacting honestly to the taste.</p></div>
-          <div class="row"><b>Who</b><p>Anyone</p></div>
-          <div class="row"><b>Film</b><p>One take, unedited. Pour, stir into warm water, drink it, react honestly. If it is not your favorite taste, say so.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I have not tried this yet. Filming the first one."</p></div>
-          <div class="row"><b>Why it lands</b><p>Taste is the number one silent objection on a syrup. An honest reaction handles it in eight seconds. Polished ruins it. Real wins.</p></div>
+      <div class="idea" data-open="false" data-p="food" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Was Never About the Food<span class="pill">Make this first</span></span><span class="idea-c">The anxiety before you even order.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Reading a menu and putting it down. Scanning for the safe option. The look on your face when someone suggests the Thai place.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I was not scared of the food. I was scared of how I would feel two hours after it."</p></div>
         </div></div></div>
       </div>
 
-      <div class="angle" data-open="false" data-chars="anyone">
-        <button class="angle-btn" aria-expanded="false"><span class="angle-n">05</span><span class="angle-t">Unboxing the Ritual</span><span class="chev"></span></button>
-        <div class="angle-body"><div class="angle-inner"><div class="angle-pad">
-          <div class="row"><b>Concept</b><p>Video of you opening the box and showing it is a whole ritual, not just a bottle.</p></div>
-          <div class="row"><b>Who</b><p>Anyone</p></div>
-          <div class="row"><b>Film</b><p>Open the box properly. It is not just a bottle. There are guides, eating tips, acupressure points, a whole world around it.</p></div>
-          <div class="row"><b>Open like</b><p class="quote">"I thought this was just going to be a bottle."</p></div>
-          <div class="row"><b>Why it lands</b><p>Unboxing proves the ritual claim physically. It is a brand, not a supplement, and the box is the evidence.</p></div>
+      <div class="idea" data-open="false" data-p="food">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Meal I Used to Skip</span><span class="idea-c">Going back to the exact dish you gave up.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Go to the actual place. Order the actual thing. Eat it on camera. Name it out loud, not "spicy food" but "pad thai".</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I had not ordered pad thai in two years. Tonight I did."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="food">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Eat It Anyway</span><span class="idea-c">Taking Liao before the big dinner and going in.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>The meal you have actually been looking forward to. Pizza, the birthday dinner, the tasting menu. You take your Liao first, then you eat all of it.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I know exactly what this meal used to do to me. I am eating all of it anyway."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="food" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Get Ready With Me for Dinner Out<span class="pill">Make this first</span></span><span class="idea-c">Liao as a normal part of getting ready.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>A normal GRWM. Somewhere between the outfit and the door you take your Liao without making a thing of it. Do not stop to explain it.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"Getting ready for the first proper dinner out I have said yes to in months."</p></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="grp" data-grp>
+      <div class="grp-h">It runs your whole life</div>
+
+      <div class="idea" data-open="false" data-p="life" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Reflux Nightstand<span class="pill">Make this first</span></span><span class="idea-c">A slow pan across the evidence. No talking needed.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Pan slowly across your nightstand. Antacids. Water. The wedge or the extra pillows. Whatever else is there. End on the Liao bottle.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"Tell me you have reflux without telling me you have reflux."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="life">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Everything I Planned Around It</span><span class="idea-c">A fast montage of all the small rules you made.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Quick cuts, one line each. What time you stop eating. What you order. Skipping the coffee. When you can lie down. Whether you can travel. Antacids in the bag.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I did not realise how much of my life was built around not setting off my reflux."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="life">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Why the Others Did Nothing</span><span class="idea-c">The shelf of things you already bought and gave up on.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Show the graveyard. Slippery elm, DGL, ginger capsules, aloe, apple cider vinegar. Then explain: one herb on its own does very little. Three chosen to work together is a different thing.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I spent about $300 on this shelf before I worked out what I was doing wrong."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="life" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">I Was the Skeptic<span class="pill">Make this first</span></span><span class="idea-c">Own the doubt properly before you say anything good.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Say you did not believe a herbal syrup would do anything, and say why. Then what actually happened, including how long it took. Do not skip to the good part.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I was pretty sure this was going to be more expensive snake oil."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="life">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Thing I Take Alongside</span><span class="idea-c">For anyone who has been on acid blockers for years.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>Calm, sitting down, honest. How long you have been on them, what worries you about the long run, and what you added alongside.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I have been on my acid blocker for six years. I am not coming off it today."</p></div>
+          <div class="row warn"><b>Careful</b><p>Never name the drug. Never suggest anyone reduce or stop taking theirs. Always say "talk to your doctor." This is the strictest one in the pack.</p></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="grp" data-grp>
+      <div class="grp-h">Show the product</div>
+
+      <div class="idea" data-open="false" data-p="any" data-need="1">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">First Sip<span class="pill">Easiest to shoot</span></span><span class="idea-c">One honest take, tasting it for the first time.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>One take, unedited. Pour, stir, drink, react honestly. If you do not love the taste, say so. It is honey thick with a licorice note.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"I have not tried this yet. Filming the first one."</p></div>
+        </div></div></div>
+      </div>
+
+      <div class="idea" data-open="false" data-p="any">
+        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">My Evening Routine</span><span class="idea-c">Liao slotted into a real routine, barely mentioned.</span></span><span class="chev"></span></button>
+        <div class="idea-body"><div class="inner"><div class="idea-pad">
+          <div class="row"><b>Film</b><p>The 30 seconds before you eat. Kettle, warm water, the stir, then the meal. Quiet, no rush, no explaining.</p></div>
+          <div class="row"><b>Open with</b><p class="quote">"This is the two minutes I take before dinner now."</p></div>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec light" id="hooks">
+<section class="sec light" id="words">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="sec-num">05</span>
-      <h2 class="d2">Hooks</h2>
-      <p class="muted">The opening lines working in this category right now, written for Liao. These are shapes to adapt, not scripts to read.</p>
+      <span class="sec-num">06</span>
+      <h2 class="d2">What to say</h2>
+      <p class="muted">These are real lines from real Liao customers. Use them, or say your own version. Either way, talk like this and not like an ad.</p>
     </div>
 
     <div class="rv">
-      <span class="eyebrow">Name a problem they never put words to</span>
-      <div class="hook"><p class="hook-ex">"If you clear your throat every single morning, that is not just a throat thing."</p></div>
-      <div class="hook"><p class="hook-ex">"That heavy feeling an hour after lunch? You are not supposed to feel that."</p></div>
+      <span class="eyebrow">How they describe it</span>
+      <div class="words">
+        <span class="word">"I chewed Tums like candy"</span>
+        <span class="word">"I was scared to eat"</span>
+        <span class="word">"Waking up with acid in my chest"</span>
+        <span class="word">"That heavy, burning feeling every day"</span>
+        <span class="word">"Can't sleep through the night"</span>
+        <span class="word">"I've tried it all"</span>
+        <span class="word">"Nothing gave me lasting relief"</span>
+        <span class="word">"It was absolutely consuming me"</span>
+        <span class="word">"Heartburn for what feels like forever"</span>
+      </div>
     </div>
 
-    <div class="rv" style="margin-top:32px">
-      <span class="eyebrow">Show them the life they want</span>
-      <div class="hook"><p class="hook-ex">"Getting ready for the first dinner out I have said yes to in months."</p></div>
-      <div class="hook"><p class="hook-ex">"Imagine eating a real dinner and then just going to bed. That is it."</p></div>
-    </div>
-
-    <div class="rv" style="margin-top:32px">
-      <span class="eyebrow">Flip what they believe</span>
-      <div class="hook"><p class="hook-ex">"You did not fail at natural remedies. They failed you. One herb on its own does almost nothing."</p></div>
-      <div class="hook"><p class="hook-ex">"Why does everyone just accept feeling wrecked after dinner?"</p></div>
-      <div class="hook"><p class="hook-ex">"I am sorry, but chewing four antacids after every meal is not a plan."</p></div>
-    </div>
-
-    <div class="rv" style="margin-top:32px">
-      <span class="eyebrow">Use exact numbers</span>
-      <div class="hook"><p class="hook-ex">"2.6 pounds of herbs go into one small bottle."</p></div>
-      <div class="hook"><p class="hook-ex">"Four ingredients. That is the entire label."</p></div>
-      <div class="hook"><p class="hook-ex">"10 to 1 concentration, when the industry standard is 5 to 1."</p></div>
-    </div>
-
-    <div class="rv" style="margin-top:32px">
-      <span class="eyebrow">Borrow real credibility</span>
-      <div class="hook"><p class="hook-ex">"A doctor of Chinese medicine made this for her own father, who had heartburn for 40 years."</p></div>
-      <div class="hook"><p class="hook-ex">"I genuinely thought this was going to do nothing."</p></div>
-    </div>
-
-    <div class="rv" style="margin-top:32px">
-      <span class="eyebrow">Call out the exact person watching</span>
-      <div class="hook"><p class="hook-ex">"If you keep antacids in your car, your desk, and your nightstand, this is for you."</p></div>
-      <div class="hook"><p class="hook-ex">"I cancelled on my friends three times last month because of my stomach."</p></div>
-      <div class="hook"><p class="hook-ex">"I changed one thing about how I eat. Not what I eat. When."</p></div>
-      <div class="hook"><p class="hook-ex">"How I eat late without paying for it at 2am."</p></div>
+    <div class="rv" style="margin-top:34px">
+      <span class="eyebrow">How they describe it after</span>
+      <div class="words">
+        <span class="word">"No fire in my chest"</span>
+        <span class="word">"I ate a normal dinner"</span>
+        <span class="word">"I'm not afraid of dinner anymore"</span>
+        <span class="word">"I slept all night"</span>
+        <span class="word">"Comfort in my belly"</span>
+        <span class="word">"I can enjoy food again"</span>
+        <span class="word">"Haven't bought Tums in over a month"</span>
+        <span class="word">"I don't have to think about what I eat"</span>
+      </div>
     </div>
 
     <div class="rv" style="margin-top:40px">
-      <span class="eyebrow">Two openings that are about delivery, not words</span>
-      <p class="muted"><strong>Native and lo fi.</strong> No intro, start mid sentence, phone camera, bathroom or car lighting. It reads as a friend posting rather than an ad, and it consistently outperforms polished.</p>
-      <p class="muted" style="margin-top:1em"><strong>Whisper or close up.</strong> Tight on the pour and the stir, quiet voice, describing the warmth and the taste. This is the highest converting voiceover style in the category.</p>
+      <span class="eyebrow">Openings that are working</span>
+      <div class="hook"><p>"If you keep antacids in your car, your desk and your nightstand, this is for you."</p></div>
+      <div class="hook"><p>"Why does everyone just accept feeling wrecked after dinner?"</p></div>
+      <div class="hook"><p>"I am sorry, but chewing four antacids after every meal is not a plan."</p></div>
+      <div class="hook"><p>"I changed one thing about how I eat. Not what I eat. When."</p></div>
+      <div class="hook"><p>"You did not fail at natural remedies. They failed you."</p></div>
+      <div class="hook"><p>"2.6 pounds of herbs go into one small bottle."</p></div>
+      <div class="hook"><p>"A doctor of Chinese medicine made this for her own father, who had heartburn for 40 years."</p></div>
     </div>
 
-    <div class="rv" style="margin-top:40px">
-      <span class="eyebrow">One format that is not video</span>
-      <p class="muted">A single plain photo, often just a screenshot of text typed in your notes app, with about 200 words underneath telling the whole story. What your stomach was like, what you tried that failed, what changed. It looks too simple to work. People over 35 read every word of these and buy from them.</p>
+    <div class="rv" style="margin-top:34px">
+      <span class="eyebrow">Two things about how you shoot it</span>
+      <p class="muted"><strong>Shoot it on your phone.</strong> No intro, start mid sentence, normal lighting. It should look like a friend posting, not an ad. That always beats polished.</p>
+      <p class="muted" style="margin-top:1em"><strong>Quiet close ups sell.</strong> Tight on the pour and the stir with a low voice over the top is the best performing style we have right now.</p>
     </div>
   </div>
 </section>
 
-<section class="sec wrap" id="examples">
+<section class="sec wrap" id="facts">
   <div class="sec-head rv">
-    <span class="sec-num">06</span>
-    <h2 class="d2">What is already working</h2>
-    <p class="muted">Real Liao ads currently running. Watch these before you film. Do not copy them shot for shot, the platform buries near duplicates. Take the structure and make your version.</p>
+    <span class="sec-num">07</span>
+    <h2 class="d2">Facts you can say out loud</h2>
+    <p class="muted">Only if your video needs a reason to believe. One or two, never all of them.</p>
+  </div>
+  <div class="rv facts">
+    <div class="fact"><span class="fact-m">+</span><span>Made by Dr. Lyda Kermani, a doctor of Chinese medicine, for her own father, who had heartburn for 40 years.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>Based on a Chinese herbal formula written down around 1,800 years ago, used all that time for exactly this.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>Four ingredients. Inula flower, licorice root, hematite, and a prebiotic. That is the whole label.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>10 to 1 concentration when the industry standard is 5 to 1. That is 2.6 pounds of herbs in one small bottle.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>No sugar, alcohol, gluten, fillers or preservatives. Vegan. Third party tested.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>About $1.50 a day on the 3 month plan. Less than a coffee.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>30 day money back guarantee.</span></div>
+    <div class="fact"><span class="fact-m">+</span><span>Over 40 clinicians in the US carry it.</span></div>
   </div>
 
-  <div class="vidgrid rv">
-    <figure class="vid">
-      <div class="vid-ph"><span>Video</span></div>
-      <figcaption><b>Founder story, long form</b><span>The doctor explaining why she built it for her father. Our longest running ad.</span></figcaption>
-    </figure>
-    <figure class="vid">
-      <div class="vid-ph"><span>Video</span></div>
-      <figcaption><b>Split screen conversation</b><span>Podcast style, two people talking through the problem. Strong return on spend.</span></figcaption>
-    </figure>
-    <figure class="vid">
-      <div class="vid-ph"><span>Video</span></div>
-      <figcaption><b>Creator UGC, phone filmed</b><span>Straight to camera, no production. The format we want most of.</span></figcaption>
-    </figure>
-    <figure class="vid">
-      <div class="vid-ph"><span>Video</span></div>
-      <figcaption><b>Daily ritual</b><span>The pour and the stir, minimal talking. Shows the product in real use.</span></figcaption>
-    </figure>
+  <div class="rv" style="margin-top:34px">
+    <div class="acc" data-open="false">
+      <button class="acc-btn" aria-expanded="false">If someone asks whether there is research<span class="chev"></span></button>
+      <div class="acc-body"><div class="inner"><div class="acc-pad">
+        Say this and nothing stronger: <strong>"It is based on a 1,800 year old formula called Xuanfu Daizhe Tang, and there is published research on it, including a 2025 trial in 72 reflux patients."</strong>
+        <span class="cite">Chin J Integr Tradit West Med Dig, 2025, 33(6): 577-581</span>
+        <p style="margin-top:1em">Always say Liao is <em>based on</em> that formula, never that it is the formula. The original has seven herbs. Liao takes the three that do the work and concentrates them.</p>
+      </div></div></div>
+    </div>
   </div>
 </section>
 
 <footer class="foot wrap">
-  <h2 class="d2 rv">If you are unsure whether a claim is safe, ask before you film.</h2>
-  <p class="rv">Not after. We would much rather answer a question than lose a good piece of content.</p>
+  <p class="rv">Not sure if you can say something? Ask before you film, not after.</p>
   <span class="mark rv">Li&#225;o</span>
 </footer>
 
@@ -755,111 +619,6 @@ strong{font-weight:700}
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* scroll reveal */
-  var rv = document.querySelectorAll(".rv");
-  if (reduce || !("IntersectionObserver" in window)) {
-    rv.forEach(function(el){ el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-    rv.forEach(function(el, i){
-      el.style.transitionDelay = Math.min(i % 4, 3) * 60 + "ms";
-      io.observe(el);
-    });
-  }
-
-  /* accordions: angles + generic */
-  function toggle(host, btn){
-    var open = host.getAttribute("data-open") === "true";
-    host.setAttribute("data-open", open ? "false" : "true");
-    btn.setAttribute("aria-expanded", open ? "false" : "true");
-  }
-  document.querySelectorAll(".angle").forEach(function(a){
-    var b = a.querySelector(".angle-btn");
-    b.addEventListener("click", function(){ toggle(a, b); });
-  });
-  document.querySelectorAll(".acc").forEach(function(a){
-    var b = a.querySelector(".acc-btn");
-    b.addEventListener("click", function(){ toggle(a, b); });
-  });
-
-  /* checklist */
-  document.querySelectorAll(".check").forEach(function(c){
-    c.addEventListener("click", function(){
-      c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") === "true" ? "false" : "true");
-    });
-  });
-
-  /* character filter */
-  var chars   = document.querySelectorAll(".char");
-  var angles  = document.querySelectorAll(".angle");
-  var groups  = document.querySelectorAll("[data-group]");
-  var bar     = document.getElementById("filterbar");
-  var text    = document.getElementById("filtertext");
-  var reset   = document.getElementById("reset");
-  var active  = null;
-
-  var NAMES = {
-    fast: "The Fast Life",
-    indulger: "The Disciplined Indulger",
-    struggler: "The Everyday Struggler",
-    med: "The Med Companion",
-    silent: "The Silent One"
-  };
-
-  function apply(){
-    var shown = 0;
-    angles.forEach(function(a){
-      var tags = (a.getAttribute("data-chars") || "").split(" ");
-      var show = !active || tags.indexOf(active) > -1 || tags.indexOf("anyone") > -1;
-      a.classList.toggle("hide", !show);
-      if (show) shown++;
-    });
-    groups.forEach(function(g){
-      var any = g.querySelector(".angle:not(.hide)");
-      g.style.display = any ? "" : "none";
-    });
-    if (active) {
-      bar.classList.add("on");
-      text.innerHTML = "Showing <b>" + shown + " angles</b> for " + NAMES[active] + ", including the ones that work for anyone.";
-      reset.hidden = false;
-    } else {
-      bar.classList.remove("on");
-      text.textContent = "Showing all 16 angles. Pick a character above to narrow it down.";
-      reset.hidden = true;
-    }
-  }
-
-  chars.forEach(function(c){
-    c.addEventListener("click", function(){
-      var key = c.getAttribute("data-char");
-      active = (active === key) ? null : key;
-      chars.forEach(function(o){
-        o.setAttribute("aria-pressed", o.getAttribute("data-char") === active ? "true" : "false");
-      });
-      apply();
-      if (active) {
-        var t = document.getElementById("angles");
-        if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-      }
-    });
-  });
-
-  reset.addEventListener("click", function(){
-    active = null;
-    chars.forEach(function(o){ o.setAttribute("aria-pressed","false"); });
-    apply();
-  });
-
-  /* nav current section + back to top */
-  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
-  var secs  = links.map(function(l){ return document.querySelector(l.getAttribute("href")); });
-  var totop = document.getElementById("totop");
-
-  /* safety net: reveal anything the observer missed */
   function sweep(){
     var h = window.innerHeight;
     document.querySelectorAll(".rv:not(.in)").forEach(function(el){
@@ -867,26 +626,111 @@ strong{font-weight:700}
       if (r.top < h * 0.95 && r.bottom > 0) el.classList.add("in");
     });
   }
+  if (reduce || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".rv").forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    document.querySelectorAll(".rv").forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 4, 3) * 55 + "ms";
+      io.observe(el);
+    });
+  }
 
+  function toggle(host, btn){
+    var open = host.getAttribute("data-open") === "true";
+    host.setAttribute("data-open", open ? "false" : "true");
+    btn.setAttribute("aria-expanded", open ? "false" : "true");
+  }
+  document.querySelectorAll(".idea").forEach(function(a){
+    var b = a.querySelector(".idea-btn");
+    b.addEventListener("click", function(){ toggle(a, b); });
+  });
+  document.querySelectorAll(".acc").forEach(function(a){
+    var b = a.querySelector(".acc-btn");
+    b.addEventListener("click", function(){ toggle(a, b); });
+  });
+
+  var probs = document.querySelectorAll(".prob");
+  var ideas = document.querySelectorAll(".idea");
+  var grps  = document.querySelectorAll("[data-grp]");
+  var bar   = document.getElementById("fbar");
+  var text  = document.getElementById("ftext");
+  var reset = document.getElementById("reset");
+  var total = ideas.length;
+  var active = null;
+
+  var NAMES = {
+    burn:"the burning",
+    sleep:"not being able to lie down",
+    food:"being scared of food",
+    bloat:"bloating and burping",
+    life:"it running your whole life"
+  };
+
+  function apply(){
+    var shown = 0;
+    ideas.forEach(function(a){
+      var tag = a.getAttribute("data-p");
+      var show = !active || tag === active || tag === "any";
+      a.classList.toggle("hide", !show);
+      if (show) shown++;
+    });
+    grps.forEach(function(g){
+      g.style.display = g.querySelector(".idea:not(.hide)") ? "" : "none";
+    });
+    if (active) {
+      bar.classList.add("on");
+      text.innerHTML = "Showing <b>" + shown + " ideas</b> for " + NAMES[active] + ", plus the two product ones.";
+      reset.hidden = false;
+    } else {
+      bar.classList.remove("on");
+      text.textContent = "Showing all " + total + " ideas. Pick a problem above to narrow them down.";
+      reset.hidden = true;
+    }
+  }
+
+  probs.forEach(function(c){
+    c.addEventListener("click", function(){
+      var key = c.getAttribute("data-p");
+      active = (active === key) ? null : key;
+      probs.forEach(function(o){
+        o.setAttribute("aria-pressed", o.getAttribute("data-p") === active ? "true" : "false");
+      });
+      apply();
+      if (active) {
+        var t = document.getElementById("ideas");
+        if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      }
+    });
+  });
+  reset.addEventListener("click", function(){
+    active = null;
+    probs.forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+    apply();
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  var secs  = links.map(function(l){ return document.querySelector(l.getAttribute("href")); });
+  var totop = document.getElementById("totop");
   function onScroll(){
     var y = window.scrollY + 140, cur = -1;
     secs.forEach(function(s, i){ if (s && s.offsetTop <= y) cur = i; });
     links.forEach(function(l, i){
-      if (i === cur) l.setAttribute("aria-current","true");
-      else l.removeAttribute("aria-current");
+      if (i === cur) l.setAttribute("aria-current","true"); else l.removeAttribute("aria-current");
     });
-    totop.classList.toggle("show", window.scrollY > 900);
+    totop.classList.toggle("show", window.scrollY > 800);
   }
   var ticking = false;
   window.addEventListener("scroll", function(){
     sweep();
-    if (!ticking) { window.requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+    if (!ticking){ window.requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
   }, { passive: true });
   window.addEventListener("resize", sweep, { passive: true });
   window.addEventListener("load", sweep);
-  [400, 1200, 2500].forEach(function(t){ window.setTimeout(sweep, t); });
-  sweep();
-  onScroll();
+  [400,1200,2500].forEach(function(t){ window.setTimeout(sweep, t); });
+  sweep(); onScroll(); apply();
 
   totop.addEventListener("click", function(){
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
