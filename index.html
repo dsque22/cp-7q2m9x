@@ -109,6 +109,22 @@ strong{font-weight:700}em{font-style:italic}
 .tbd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--terracotta);border:1px dashed rgba(240,92,74,.45);padding:3px 8px;border-radius:3px}
 
+/* problem / dream */
+.pd-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.pd{padding:19px 20px;border-radius:3px}
+.pd-prob{background:rgba(240,92,74,.09);border:1px solid rgba(240,92,74,.26)}
+.pd-dream{background:rgba(253,223,195,.1);border:1px solid rgba(253,223,195,.32)}
+.pd-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  display:block;margin-bottom:13px}
+.pd-prob .pd-k{color:var(--terracotta)}
+.pd-dream .pd-k{color:var(--peach)}
+.pd ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.pd li{font-size:15.5px;line-height:1.4;padding-left:17px;position:relative;color:var(--linen)}
+.pd-prob li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:1.5px;background:var(--terracotta)}
+.pd-dream li::before{content:"";position:absolute;left:1px;top:6px;width:8px;height:4px;
+  border-left:1.5px solid var(--peach);border-bottom:1.5px solid var(--peach);transform:rotate(-45deg)}
+@media (min-width:600px){.pd-grid{grid-template-columns:1fr 1fr;gap:14px}}
+
 /* problems */
 .probs{display:flex;flex-direction:column;gap:10px}
 .prob{width:100%;text-align:left;font-family:var(--body);color:var(--linen);
@@ -210,7 +226,7 @@ strong{font-weight:700}em{font-style:italic}
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
     <a href="#start">Start here</a>
-    <a href="#problem">Pick a problem</a>
+    <a href="#problem">Your customer</a>
     <a href="#ideas">Video ideas</a>
     <a href="#facts">Facts</a>
   </div>
@@ -262,8 +278,46 @@ strong{font-weight:700}em{font-style:italic}
 <section class="sec wrap" id="problem">
   <div class="sec-head rv">
     <span class="sec-num">02</span>
-    <h2 class="d2">Pick the situation you are showing</h2>
-    <p class="muted">Not a symptom, a situation. Tap the one that is honestly yours and the ideas below will narrow to it.</p>
+    <h2 class="d2">Who you are talking to</h2>
+    <p class="muted">One person, two halves. What they live with now, and what they actually want. Your video moves them from the left to the right.</p>
+  </div>
+
+  <div class="pd-grid rv">
+    <div class="pd pd-prob">
+      <span class="pd-k">The problem they have</span>
+      <ul>
+        <li>Burning in the chest after eating</li>
+        <li>Acid coming back up into the throat</li>
+        <li>Burping through the whole evening</li>
+        <li>Bloated, swollen and overly full</li>
+        <li>Food sitting there like it has not moved</li>
+        <li>Cannot lie flat after dinner</li>
+        <li>Awake at 2am</li>
+        <li>Saying no to food they love</li>
+        <li>Planning the day around what they can eat</li>
+        <li>Antacids in the bag, the car and the nightstand</li>
+      </ul>
+    </div>
+    <div class="pd pd-dream">
+      <span class="pd-k">The outcome they want</span>
+      <ul>
+        <li>Order what everyone else is ordering</li>
+        <li>Pasta, bread and wine, with no maths</li>
+        <li>Finish dinner and just go to bed</li>
+        <li>Sleep the whole night</li>
+        <li>Feel light after a meal, not heavy</li>
+        <li>Say yes to the dinner and the trip</li>
+        <li>Stop scanning the menu for the safe thing</li>
+        <li>Be a foodie again</li>
+        <li>Stop thinking about their stomach at all</li>
+        <li>Enjoy life without giving things up</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:46px">
+    <span class="eyebrow">Pick the situation you are showing</span>
+    <p class="muted" style="margin-bottom:22px">Not a symptom, a situation. Tap the one that is honestly yours and the ideas below will narrow to it.</p>
   </div>
   <div class="probs rv">
     <button class="prob" data-p="out" aria-pressed="false">
