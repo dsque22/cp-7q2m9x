@@ -190,6 +190,14 @@ strong{font-weight:700}em{font-style:italic}
 .hook p{font-family:var(--display);font-style:italic;font-size:18.5px;line-height:1.35;
   color:var(--ground);margin:0}
 
+/* market stats */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:4px}
+.stat-c{padding:17px 16px;background:var(--ground-2);border:1px solid var(--line);border-radius:3px}
+.stat-c b{display:block;font-family:var(--display);font-style:italic;font-size:clamp(28px,7.5vw,36px);
+  line-height:1;color:var(--peach);margin-bottom:9px}
+.stat-c span{display:block;font-size:14.5px;line-height:1.4;color:var(--linen-dim)}
+.src{font-family:var(--mono);font-size:10.5px;line-height:1.5;color:var(--sage);margin-top:14px}
+
 /* facts */
 .facts{display:flex;flex-direction:column;gap:0}
 .fact{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
@@ -567,7 +575,21 @@ strong{font-weight:700}em{font-style:italic}
     <h2 class="d2">Facts you can say out loud</h2>
     <p class="muted">Only if your video needs a reason to believe. One or two, never all of them.</p>
   </div>
-  <div class="rv facts">
+
+  <div class="rv">
+    <span class="eyebrow">How many people this is</span>
+    <p class="muted small" style="margin-bottom:18px">You are not talking to a niche. Saying one of these out loud early is a good way to make someone realise the video is about them.</p>
+    <div class="stats-grid">
+      <div class="stat-c"><b>1 in 5</b><span>Americans get heartburn or acid reflux every single week</span></div>
+      <div class="stat-c"><b>2 in 5</b><span>get it at least once a month</span></div>
+      <div class="stat-c"><b>20%</b><span>of US adults have GERD, the chronic version of it</span></div>
+      <div class="stat-c"><b>$4bn</b><span>spent every year in the US looking for relief from it</span></div>
+    </div>
+    <p class="src">Weekly and monthly figures: International Foundation for Gastrointestinal Disorders. GERD prevalence: North America 18 to 28% per a review in Gut. Market size: US antacids category, approx $3.9bn in 2024.</p>
+  </div>
+
+  <div class="rv facts" style="margin-top:44px">
+    <span class="eyebrow">About the product</span>
     <div class="fact"><span class="fact-m">+</span><span>Made by Dr. Lyda Kermani, a doctor of Chinese medicine, for her own father, who had heartburn for 30 years.</span></div>
     <div class="fact"><span class="fact-m">+</span><span>Based on a Chinese herbal formula written down around 1,800 years ago, used all that time for exactly this.</span></div>
     <div class="fact"><span class="fact-m">+</span><span>Four ingredients. Inula flower, licorice root, hematite, and a prebiotic. That is the whole label.</span></div>
