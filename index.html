@@ -124,6 +124,28 @@ strong{font-weight:700}em{font-style:italic}
 .reset:hover{background:var(--forest);color:var(--linen);border-color:var(--forest)}
 .reset:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
 
+/* example videos */
+.vidrail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  margin:0 calc(var(--pad) * -1) 30px;padding:0 var(--pad) 4px}
+.vidrail::-webkit-scrollbar{display:none}
+.vidcard{flex:0 0 auto;width:min(70vw,238px);scroll-snap-align:start}
+.vidwrap{position:relative;aspect-ratio:9/16;background:var(--forest-deep);
+  border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.vidwrap video{width:100%;height:100%;object-fit:cover;display:block;background:var(--forest-deep)}
+.vidplay{position:absolute;inset:0;border:0;padding:0;cursor:pointer;
+  background:linear-gradient(180deg,rgba(8,49,29,0) 42%,rgba(8,49,29,.5) 100%);
+  display:flex;align-items:center;justify-content:center;transition:opacity .25s}
+.vidwrap.playing .vidplay{opacity:0;pointer-events:none}
+.vidplay i{width:46px;height:46px;border-radius:100px;background:rgba(243,240,236,.94);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(8,49,29,.3)}
+.vidplay i::after{content:"";width:0;height:0;margin-left:4px;
+  border-left:14px solid var(--forest);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.vidplay:focus-visible{outline:2px solid var(--terracotta);outline-offset:-3px}
+.vidtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--terracotta-ink);margin:12px 0 5px}
+.vidcap{font-size:14.5px;line-height:1.5;color:var(--ink-dim);margin:0}
+
 /* ideas */
 .grp{margin-bottom:30px}
 .grp-h{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
@@ -311,6 +333,32 @@ strong{font-weight:700}em{font-style:italic}
     <span class="sec-num">03</span>
     <h2 class="d2">Video ideas</h2>
     <p class="muted">Pick one. Tap it for the shots and an example opening line. Do not read the example out, say your own version.</p>
+  </div>
+
+  <div class="rv">
+    <h3 class="eyebrow">Two that worked</h3>
+    <p class="muted small" style="margin:0 0 18px">Different formats, both fine. Watch how fast each one gets to the point.</p>
+    <div class="vidrail">
+
+      <div class="vidcard">
+        <div class="vidwrap">
+          <video src="media/ex-table.mp4" poster="media/ex-table.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the hands and food example"><i></i></button>
+        </div>
+        <p class="vidtag">Hands and food, no face</p>
+        <p class="vidcap">Filmed from above at a real dinner. You never see her. Food, hands and captions carry the whole thing. The Liao goes in before the meal and it takes two seconds. Good if you would rather not be on camera.</p>
+      </div>
+
+      <div class="vidcard">
+        <div class="vidwrap">
+          <video src="media/ex-talking.mp4" poster="media/ex-talking.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the talking to camera example"><i></i></button>
+        </div>
+        <p class="vidtag">Talking to camera</p>
+        <p class="vidcap">Her bedroom, no set, no lighting. She names the feeling in plain words before she goes anywhere near the product. Notice she is talking, not reading. Good if you are comfortable on camera.</p>
+      </div>
+
+    </div>
   </div>
 
   <div class="filterbar rv" id="fbar">
@@ -615,6 +663,24 @@ strong{font-weight:700}em{font-style:italic}
     var b = a.querySelector(".idea-btn");
     b.addEventListener("click", function(){ toggle(a, b); });
   });
+  // example videos: poster until tapped, then native controls, one playing at a time
+  var vwraps = [].slice.call(document.querySelectorAll(".vidwrap"));
+  vwraps.forEach(function(w){
+    var v = w.querySelector("video");
+    w.querySelector(".vidplay").addEventListener("click", function(){
+      vwraps.forEach(function(o){ if (o !== w) o.querySelector("video").pause(); });
+      w.classList.add("playing");
+      v.controls = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    });
+    v.addEventListener("ended", function(){
+      w.classList.remove("playing");
+      v.controls = false;
+      v.currentTime = 0;
+    });
+  });
+
   var probs = document.querySelectorAll(".prob");
   var ideas = document.querySelectorAll(".idea");
   var grps  = document.querySelectorAll("[data-grp]");
