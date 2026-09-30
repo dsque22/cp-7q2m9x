@@ -113,17 +113,10 @@ strong{font-weight:700}em{font-style:italic}
 .prob span{display:block;font-size:15px;line-height:1.5;color:var(--ink-dim)}
 .prob[aria-pressed="true"] span{color:rgba(243,240,236,.82)}
 
-.filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:13px 16px;
-  background:var(--linen-alt);border:1px solid var(--line);border-radius:3px;
-  margin-bottom:24px;font-size:14.5px}
-.filterbar.on{background:rgba(245,217,205,.55);border-color:rgba(147,84,83,.24)}
-.filterbar p{margin:0;flex:1;min-width:180px;color:var(--ink-dim)}
-.filterbar b{color:var(--terracotta-ink)}
-.reset{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  background:none;border:1px solid rgba(8,49,29,.3);color:var(--forest);padding:7px 13px;
-  border-radius:100px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.reset:hover{background:var(--forest);color:var(--linen);border-color:var(--forest)}
-.reset:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+/* lanes */
+.js .lane{display:none}
+.js .lane.on{display:block}
+.lane{scroll-margin-top:56px}
 
 /* example videos */
 .vidrail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
@@ -153,16 +146,12 @@ strong{font-weight:700}em{font-style:italic}
   font-weight:500;color:var(--terracotta-ink);padding-bottom:9px;
   border-bottom:1px solid var(--line);margin-bottom:2px}
 .idea{border-bottom:1px solid var(--line)}
-.idea.hide{display:none}
 .idea-btn{width:100%;display:flex;align-items:flex-start;gap:13px;text-align:left;background:none;
   border:0;color:var(--forest);font-family:var(--body);padding:16px 0;cursor:pointer}
 .idea-btn:focus-visible{outline:2px solid var(--forest);outline-offset:-2px}
 .idea-txt{flex:1}
 .idea-t{display:block;font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin-bottom:4px}
 .idea-c{display:block;font-size:15px;line-height:1.45;color:var(--ink-dim)}
-.pill{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--olive);background:var(--sand);padding:3px 7px;border-radius:100px;
-  margin-left:7px;vertical-align:2px;white-space:nowrap;display:inline-block}
 .chev{flex:0 0 auto;width:10px;height:10px;border-right:1.5px solid var(--sage);
   border-bottom:1.5px solid var(--sage);transform:rotate(45deg);margin-top:8px;
   transition:transform .3s cubic-bezier(.2,.6,.3,1),border-color .2s}
@@ -178,22 +167,11 @@ strong{font-weight:700}em{font-style:italic}
 .quote{font-family:var(--display);font-style:italic;font-size:18.5px;line-height:1.35;color:var(--clay);margin:0}
 .row.warn b{color:var(--terracotta-ink)}.row.warn p{color:var(--forest)}
 
-/* market stats */
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:4px}
-.stat-c{padding:17px 16px;background:rgba(245,217,205,.55);
-  border:1px solid rgba(147,84,83,.2);border-radius:3px}
-.stat-c b{display:block;font-family:var(--display);font-style:italic;font-size:clamp(28px,7.5vw,36px);
-  line-height:1;color:var(--terracotta-deep);margin-bottom:9px}
-.stat-c span{display:block;font-size:14.5px;line-height:1.4;color:var(--ink-dim)}
-.src{font-family:var(--mono);font-size:10.5px;line-height:1.5;color:var(--olive);margin-top:14px}
-
 /* facts */
 .facts{display:flex;flex-direction:column;gap:0}
 .fact{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
 .fact:last-child{border-bottom:0}
 .fact-m{color:var(--terracotta-ink);font-family:var(--mono);font-size:12px;flex:0 0 auto;padding-top:3px}
-
-.cite{font-family:var(--mono);font-size:11.5px;color:var(--olive);display:block;margin-top:7px}
 
 /* closing band, forest like the site footer */
 .foot{background:var(--forest);color:var(--linen);
@@ -209,154 +187,336 @@ strong{font-weight:700}em{font-style:italic}
 .totop:focus-visible{outline:2px solid var(--terracotta-deep);outline-offset:3px}
 .totop i{display:block;width:9px;height:9px;border-left:2px solid var(--linen);
   border-top:2px solid var(--linen);transform:rotate(45deg);margin-top:3px}
+/* hooks and customer lines: display italic, one per row */
+.hooks{list-style:none;margin:0;padding:0}
+.hooks li{padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-style:italic;
+  font-size:18px;line-height:1.35;color:var(--clay)}
+.hooks li:last-child{border-bottom:0}
+.hooks li span{display:block;margin-top:4px;font-family:var(--mono);font-style:normal;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
+.lane .eyebrow{margin-top:30px}
+.lane .pd-grid{margin-top:16px}
+.plist{margin:8px 0 0;padding-left:20px}
+.plist li{margin:3px 0}
+.studies-note{display:block;margin-top:14px;font-size:14.5px;line-height:1.5;color:var(--ink-dim)}
+.studies{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.studies a{display:block;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fff;text-decoration:none}
+.studies img{width:100%;height:110px;object-fit:cover;object-position:left top;display:block}
+.studies span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--olive);padding:8px 9px;background:var(--linen)}
 </style>
 
 <script>document.documentElement.classList.add("js");</script>
 
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
-    <a href="#start">Start</a>
-    <a href="#problem">Customer</a>
-    <a href="#ideas">Ideas</a>
-    <a href="#product">Product</a>
-    <a href="#facts">Facts</a>
+    <a href="#liao">Liao</a>
+    <a href="#say">Say</a>
+    <a href="#who">Who</a>
+    <a href="#film">Film</a>
+    <a href="#rules">Rules</a>
   </div>
 </nav>
 
 <h1 class="vh">Li&#225;o Creator Pack</h1>
 
-<section class="sec wrap" id="start">
+<section class="sec wrap" id="liao">
   <div class="sec-head rv">
     <span class="sec-num">01</span>
-    <h2 class="d2">Start here</h2>
+    <h2 class="d2">Meet Liao</h2>
   </div>
 
   <div class="rv">
-    <p class="lede">Liao is a thick herbal syrup you mix into warm water and drink before meals.</p>
-    <p class="lede muted" style="margin-top:1em">It is for people whose stomach makes them pay for eating. Bloating and belching after almost every meal. Food sitting there for hours like it has not moved. The burn that shows up an hour later. Acid coming back up at night.</p>
-  </div>
-
-  <div class="rv" style="margin-top:30px">
-    <div class="box box-terra">
-      <span class="box-k">What you are actually selling</span>
-      <p>Life is meant to enjoy. We help people find the balance to do it.</p>
-      <p style="margin-top:.8em">That means ordering what everyone else is ordering. Eating the pasta, the bread and the wine, and then just getting on with your evening. Selective, never restrictive.</p>
+    <div class="facts">
+      <div class="fact"><span class="fact-m">+</span><span><strong>The brand.</strong> Liao makes the power of Chinese medicine simple and accessible. Our founder, a Doctor of Chinese Medicine, turns ancient herbal formulas into powerful syrups and teas. Everything is 100% natural, with no fillers and no alcohol. Our syrups work on the root cause and are 10:1 concentrated: one small spoon carries about 10 capsules' worth of herbs.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>The product.</strong> Liao is an herbal syrup for:<ul class="plist"><li>Acid reflux</li><li>Heartburn</li><li>Silent reflux (LPR)</li><li>Strengthening digestion</li></ul></span></div>
     </div>
   </div>
 
-  <div class="rv" style="margin-top:34px">
-    <div class="box box-peach">
-      <span class="box-k">Call it Liao</span>
-      <p>On camera, always say <strong>Liao</strong>. Never say Reflux Relief, even if that is what is printed on the bottle you were sent. The name is changing and we do not want the old one in your video.</p>
-    </div>
-  </div>
-
-  <div class="rv">
-    <h3 class="eyebrow">The one shot we need</h3>
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">The story of Liao</h3>
     <div class="steps">
-      <div class="step"><span class="step-n">1</span><span>Pour one spoon into a cup of warm water.</span></div>
-      <div class="step"><span class="step-n">2</span><span>Stir it. Show how thick it is.</span></div>
-      <div class="step"><span class="step-n">3</span><span>Drink it 30 minutes before you eat. Twice a day.</span></div>
+      <div class="step"><span class="step-n">1</span><span>A man had heartburn for 30 years. He tried everything and nothing lasted. He was scared to eat and woke up at night with acid in his chest.</span></div>
+      <div class="step"><span class="step-n">2</span><span>His daughter, Dr. Lyda Kermani, became a Doctor of Chinese Medicine. She went back to a formula Chinese medicine has used for 1,800 years for exactly this problem, refined it, and tested it for 6 months.</span></div>
+      <div class="step"><span class="step-n">3</span><span>It worked. Today her dad eats what he loves, has wine with the family, and goes to bed without fear.</span></div>
+      <div class="step"><span class="step-n">4</span><span>That formula became Liao.</span></div>
     </div>
-    <p class="muted small">Film the pour and the stir close up, in almost every video. It is the single most useful thing you can give us, and it is what makes a video look like a real routine instead of an ad.</p>
+    <ul class="hooks">
+      <li>"I made Liao for my dad. Now I want to help anyone who, like him, stopped enjoying life because of heartburn."<span>Dr. Lyda Kermani</span></li>
+    </ul>
+    <p class="muted small" style="margin-top:14px">Tell it like a story, not an ad. Her dad is your viewer: years of reflux, tried everything, scared to eat. They want his ending.</p>
+  </div>
+
+  <div class="rv" style="margin-top:26px">
+    <div class="box box-peach">
+      <span class="box-k">Say it. Spell it.</span>
+      <p>Say <strong>Liao</strong>: lee-OW. Spell it <strong>L-I-A-O</strong> in every caption and subtitle. Not Laio, not Lao, not Leo. The logo writes it Li&#225;o, you type plain Liao. Never call it Reflux Relief, even though that is on your bottle. The name is changing.</p>
+    </div>
   </div>
 </section>
 
-<section class="sec wrap" id="problem">
+<section class="sec wrap" id="say">
   <div class="sec-head rv">
     <span class="sec-num">02</span>
-    <h2 class="d2">Who you are talking to</h2>
-    <p class="muted">One person, two halves. What they live with now, and what they actually want. Your video moves them from the left to the right.</p>
-  </div>
-
-  <div class="pd-grid rv">
-    <div class="pd pd-prob">
-      <span class="pd-k">The problem they have</span>
-      <ul>
-        <li>Burning in the chest after eating</li>
-        <li>Acid coming back up into the throat</li>
-        <li>Burping through the whole evening</li>
-        <li>Bloated, swollen and overly full</li>
-        <li>Food sitting there like it has not moved</li>
-        <li>Cannot lie flat after dinner</li>
-        <li>Awake at 2am</li>
-        <li>Saying no to food they love</li>
-        <li>Planning the day around what they can eat</li>
-        <li>Antacids in the bag, the car and the nightstand</li>
-      </ul>
-    </div>
-    <div class="pd pd-dream">
-      <span class="pd-k">The outcome they want</span>
-      <ul>
-        <li>Order what everyone else is ordering</li>
-        <li>Pasta, bread and wine, with no maths</li>
-        <li>Finish dinner and just go to bed</li>
-        <li>Sleep the whole night</li>
-        <li>Feel light after a meal, not heavy</li>
-        <li>Say yes to the dinner and the trip</li>
-        <li>Stop scanning the menu for the safe thing</li>
-        <li>Be a foodie again</li>
-        <li>Stop thinking about their stomach at all</li>
-        <li>Enjoy life without giving things up</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="rv" style="margin-top:46px">
-    <h3 class="eyebrow" style="margin-bottom:22px">Pick the avatar</h3>
-  </div>
-  <div class="probs rv">
-    <button class="prob" data-p="out" aria-pressed="false">
-      <b>You eat out more than you cook</b>
-      <span>Busy, no time, takeout and restaurants most days, and you know the food is not great. Bloating, belching and heaviness after almost every meal. It has become normal.</span>
-    </button>
-    <button class="prob" data-p="want" aria-pressed="false">
-      <b>You want the pasta</b>
-      <span>You can see the meal you actually want. You already know what it will cost you tonight. So you order the safe thing again, or you eat it and pay for it.</span>
-    </button>
-    <button class="prob" data-p="after" aria-pressed="false">
-      <b>The hours after dinner</b>
-      <span>The burn that shows up an hour later, not while you are eating. Not being able to lie flat. Two pillows. Awake at 2am with acid in your chest.</span>
-    </button>
-    <button class="prob" data-p="never" aria-pressed="false">
-      <b>It never seems to move</b>
-      <span>Food sitting there like it has gone nowhere. Burping through the whole evening. Swollen and tight from an ordinary meal. Unbuttoning your jeans at the table.</span>
-    </button>
-    <button class="prob" data-p="tried" aria-pressed="false">
-      <b>You have tried everything</b>
-      <span>Antacids in the car, the desk and the nightstand. Every powder, tea and remedy. Planning your whole day around what you can eat and when.</span>
-    </button>
-  </div>
-</section>
-
-<section class="sec wrap" id="ideas">
-  <div class="sec-head rv">
-    <span class="sec-num">03</span>
-    <h2 class="d2">Video ideas</h2>
-    <p class="muted">Pick one. Tap it for the shots and an example opening line. Do not read the example out, say your own version.</p>
+    <h2 class="d2">What to say</h2>
   </div>
 
   <div class="rv">
-    <h3 class="eyebrow">Five that worked</h3>
-    <p class="muted small" style="margin:0 0 18px">Five different formats, all of them fine. Swipe through and pick the one that fits how you like to film. Watch how fast each one gets to the point.</p>
+    <h3 class="eyebrow">How Liao works</h3>
+    <div class="facts">
+      <div class="fact"><span class="fact-m">+</span><span><strong>Other products stop the acid.</strong> Antacids neutralize it. Acid blockers make less of it. Rafts float on top of it. They deal with the acid once it is there.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Liao works on why it comes up.</strong> Your digestion is meant to move one way: down. When it pushes up instead, you get the burn, the acid coming back up, the bloating. Push up far enough and it reaches your throat with no burn at all. That is silent reflux. Chinese medicine named this pattern 1,800 years ago: <strong>Rebellious Stomach Energy</strong>.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>That is the root.</strong> Three herbs, each with a job: one guides digestion back down, one anchors what rises, one calms the stomach and ties the formula together. Plus a prebiotic for your gut. This is the Chinese medicine way: fix the root, not just the symptom.</span></div>
+    </div>
+    <div class="box box-terra" style="margin-top:20px">
+      <span class="box-k">Say it like this</span>
+      <p>"Everything I tried was about stopping the acid. Liao works on the root: why it was coming up in the first place. Digestion should move down. Liao helps it move down again."</p>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Why Liao is different. Pick one per video.</h3>
+    <div class="facts">
+      <div class="fact"><span class="fact-m">1</span><span><strong>Works at the root.</strong> How it works, right above. Lead with this one.</span></div>
+      <div class="fact"><span class="fact-m">2</span><span><strong>Backed by real research.</strong> Most natural reflux products are trending ingredients stacked together, and almost none were ever tested as a blend. The formula Liao is based on has published clinical trials by universities and hospitals. What they found:<ul class="plist"><li>2025, 72 people with reflux, 8 weeks: the group on the formula ended with less heartburn and acid reflux than the group on a prescription acid blocker.</li><li>2022, a review of 7 trials: adding the formula to acid blockers helped more people get rid of their symptoms than acid blockers alone.</li></ul>Liao itself is third-party tested for purity, potency and heavy metals. Say it like: "Most natural stuff is a bunch of trendy ingredients. The formula behind Liao has real published studies."<span class="studies-note">The 2025 study, ready for your video. Tap to open, then press and hold to save. Use it as a pop-up or a green screen.</span><div class="studies"><a href="media/study-2025-title.jpg" target="_blank" rel="noopener"><img src="media/study-2025-title.jpg" alt="2025 study title page" loading="lazy"><span>Title card</span></a><a href="media/study-2025-abstract.jpg" target="_blank" rel="noopener"><img src="media/study-2025-abstract.jpg" alt="2025 study abstract with the result highlighted" loading="lazy"><span>Full abstract, result highlighted</span></a></div></span></div>
+      <div class="fact"><span class="fact-m">3</span><span><strong>Seriously concentrated, and a real deal.</strong> About 10 capsules' worth of herbs in one small spoon. A 10:1 concentrated extract. To make one bottle yourself, you would buy $300 worth of whole herbs and cook them. Liao costs a fraction of that.</span></div>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Angles that work</h3>
+    <div class="facts">
+      <div class="fact"><span class="fact-m">+</span><span><strong>The shelf.</strong> Show everything that did not work. Then the one thing that is different, and why.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>2am.</strong> The pillows, the acid, the clock. Then the first flat night.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>The throat reveal.</strong> Years of clearing, then finally a name for it.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>The skeptic.</strong> "I thought it was another supplement." Own the doubt, then one hard fact.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Week by week.</strong> The relief you felt in the first days, then the wins stacking up: the first flat night, the dinner without math.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>For someone you love.</strong> Your partner or parent, and what changed for them.</span></div>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Real Liao customers said</h3>
+    <ul class="hooks">
+      <li>"so what could 3 herbs supplement actually do??"<span>Claudine</span></li>
+      <li>"Only thing that has even touched my heartburn"<span>Shane D.</span></li>
+      <li>"For the first time in years I feel hopeful"<span>Claudine</span></li>
+    </ul>
+    <p class="muted small" style="margin-top:14px">Hear the tone: specific, a little skeptical, never "miracle". Sound like this. Never read their words out as your own.</p>
+  </div>
+</section>
+
+<section class="sec wrap" id="who">
+  <div class="sec-head rv">
+    <span class="sec-num">03</span>
+    <h2 class="d2">Who you are talking to</h2>
+    <p class="muted">Your assignment names your avatar. Tap it. Talk to that one person.</p>
+  </div>
+
+  <div class="probs rv" id="lanepick">
+    <button class="prob" data-lane="a" aria-pressed="false" aria-expanded="false" aria-controls="lane-a">
+      <b>Reflux</b>
+      <span>Heartburn, acid in the throat, awake at night. Knows it is reflux. Tired of everything they tried.</span>
+    </button>
+    <button class="prob" data-lane="b" aria-pressed="false" aria-expanded="false" aria-controls="lane-b">
+      <b>Silent Reflux</b>
+      <span>Throat clearing, a lump in the throat, mucus, hoarse mornings. No heartburn. Has no idea it is reflux.</span>
+    </button>
+    <button class="prob" data-lane="c" aria-pressed="false" aria-expanded="false" aria-controls="lane-c">
+      <b>Real Life</b>
+      <span>Loves food and going out. Pays for it after. Sell the yes.</span>
+    </button>
+  </div>
+
+  <div class="lane" id="lane-a">
+    <h3 class="eyebrow">Reflux</h3>
+    <div class="box box-peach">
+      <span class="box-k">Where their head is</span>
+      <p>They know they have reflux. They have tried antacids, pills, pillows, teas, maybe prescriptions. Things worked for a while, then stopped. They do not need to hear they have reflux. They need to hear why nothing lasted.</p>
+    </div>
+    <div class="pd-grid">
+      <div class="pd pd-prob">
+        <span class="pd-k">How they talk</span>
+        <ul>
+          <li>"It worked at first. Then it stopped working."</li>
+          <li>"I sleep propped up on pillows."</li>
+          <li>"I wake up at 2am with acid in my throat."</li>
+          <li>"Even water sets it off."</li>
+          <li>"I've tried every tea, every supplement, every diet."</li>
+          <li>"I'm scared to eat."</li>
+        </ul>
+      </div>
+      <div class="pd pd-dream">
+        <span class="pd-k">What they want</span>
+        <ul>
+          <li>Sleep flat through the night</li>
+          <li>A normal dinner without doing math</li>
+          <li>Something that lasts, not another quick fix</li>
+          <li>To stop thinking about their stomach at all</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box box-terra" style="margin-top:20px">
+      <span class="box-k">How to sell it</span>
+      <p>Hit the pain in the first 3 seconds, in their words. Then say why the other stuff did not last: it held the acid down and never changed the direction. Then Liao and the ritual, fast. Then the life: the flat night, the normal dinner. CTA last.</p>
+    </div>
+    <h3 class="eyebrow">Hooks to steal</h3>
+    <ul class="hooks">
+      <li>"Everything I tried was holding the acid down. Nothing asked why it was coming up."</li>
+      <li>"The pills worked at first. Then they just stopped."</li>
+      <li>"How many pillows are you sleeping on right now?"</li>
+      <li>"Still up at 2am after trying everything? You are not doing it wrong."</li>
+      <li>"I was so skeptical. What could three herbs actually do?"</li>
+    </ul>
+  </div>
+
+  <div class="lane" id="lane-b">
+    <h3 class="eyebrow">Silent Reflux</h3>
+    <div class="box box-peach">
+      <span class="box-k">Where their head is</span>
+      <p>They clear their throat all day and nobody can tell them why. Allergy pills, sprays, lozenges, the ENT. Some were told it is anxiety. No heartburn, so reflux never crossed their mind. Naming it is the whole video.</p>
+    </div>
+    <div class="pd-grid">
+      <div class="pd pd-prob">
+        <span class="pd-k">How they talk</span>
+        <ul>
+          <li>"I clear my throat all day long."</li>
+          <li>"It feels like there's a lump in my throat."</li>
+          <li>"Mucus after every single meal."</li>
+          <li>"I wake up hoarse."</li>
+          <li>"My voice sounds wrong at work."</li>
+          <li>"They said allergies. Then they said anxiety."</li>
+        </ul>
+      </div>
+      <div class="pd pd-dream">
+        <span class="pd-k">What they want</span>
+        <ul>
+          <li>A name for what is happening</li>
+          <li>To be believed</li>
+          <li>A clear throat in the morning</li>
+          <li>Their voice back</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box box-terra" style="margin-top:20px">
+      <span class="box-k">How to sell it</span>
+      <p>Open on the throat, never on heartburn. Then the reveal: reflux does not always burn, it can show up in your throat. Then how Liao works at the root. Tell them to get a throat that will not clear checked by a doctor. It makes you more believable, not less.</p>
+    </div>
+    <h3 class="eyebrow">Hooks to steal</h3>
+    <ul class="hooks">
+      <li>"If you clear your throat all day and nobody can tell you why, watch this."</li>
+      <li>"No heartburn. Just a throat that never feels clear. That can still be reflux."</li>
+      <li>"I treated it like allergies for two years. It was not allergies."</li>
+      <li>"Every morning starts the same: ten minutes of clearing my throat before I can talk."</li>
+      <li>"Three doctors, zero answers. Then I heard the words silent reflux."</li>
+    </ul>
+    <p class="muted small" style="margin-top:16px">Never say Liao treats silent reflux or LPR. Talk about the symptom and your own experience.</p>
+  </div>
+
+  <div class="lane" id="lane-c">
+    <h3 class="eyebrow">Real Life</h3>
+    <p>For someone who loves food and going out, and pays for it after: the burn after the good dinner, the bloat, the bad night. They scroll past supplement ads. They stop for someone living the life they miss.</p>
+    <div class="pd pd-prob" style="margin-top:16px">
+      <span class="pd-k">How they talk</span>
+      <ul>
+        <li>"What is this going to cost me tonight?"</li>
+        <li>"The safe order, again."</li>
+        <li>"I miss eating whatever I like."</li>
+      </ul>
+    </div>
+    <div class="box box-terra" style="margin-top:20px">
+      <span class="box-k">How to sell it</span>
+      <p>Open on the moment: the dinner, the date, the trip. Name the reflux once so they know what this is about. Then the ritual in two seconds on the way out, and the night going well. Sell the yes.</p>
+    </div>
+    <h3 class="eyebrow">Hooks to steal</h3>
+    <ul class="hooks">
+      <li>"I said yes to the group dinner for the first time in months."</li>
+      <li>"Everyone else is reading the menu. I used to be doing math."</li>
+      <li>"Brunch used to cost me the whole afternoon."</li>
+    </ul>
+  </div>
+
+  <p class="muted small rv" style="margin-top:30px">Only use a hook if it is true for you. Keep the idea, say it in your own words. Licensed practitioner? Explain the Chinese medicine view in plain words. Never diagnose, prescribe or tell anyone to change medication.</p>
+</section>
+
+<section class="sec wrap" id="film">
+  <div class="sec-head rv">
+    <span class="sec-num">04</span>
+    <h2 class="d2">Film it</h2>
+    <p class="muted">30 to 60 seconds. Your phone, a real place, you talking to one person.</p>
+  </div>
+
+  <div class="rv">
+    <div class="box box-terra">
+      <span class="box-k">The rule</span>
+      <p>One video = one avatar + one story + one selling point + one CTA. Your assignment sets the avatar, the CTA, the link, the disclosure and what to deliver. Missing something? Ask before you film.</p>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">The flow</h3>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><span><strong>0 to 3s. The hook.</strong> The symptom, in their words. Say it and put it on screen.</span></div>
+      <div class="step"><span class="step-n">2</span><span><strong>3 to 15s. Your story.</strong> What you tried. Why it did not last.</span></div>
+      <div class="step"><span class="step-n">3</span><span><strong>15 to 30s. Liao.</strong> One selling point. The pour and stir, close up.</span></div>
+      <div class="step"><span class="step-n">4</span><span><strong>30 to 50s. The life.</strong> The flat night, the clear morning, the dinner.</span></div>
+      <div class="step"><span class="step-n">5</span><span><strong>Last line. The CTA.</strong> Exactly as your assignment says.</span></div>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">The ritual</h3>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Bottle on camera, label facing out.</span></div>
+      <div class="step"><span class="step-n">2</span><span>One spoon into a cup of warm water.</span></div>
+      <div class="step"><span class="step-n">3</span><span>Stir it. Show how thick it is.</span></div>
+      <div class="step"><span class="step-n">4</span><span>Drink it 30 minutes before breakfast and dinner.</span></div>
+    </div>
+    <p class="muted small">Film the pour and stir close up in every video. Three seconds is enough. The ritual is the bridge, never the whole video.</p>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Video tips</h3>
+    <div class="facts">
+      <div class="fact"><span class="fact-m">+</span><span><strong>Add simple subtitles.</strong> Most people watch on mute. Caption every word you say: plain white or black text, big, one or two lines, in the lower third and clear of the app buttons.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Spell Liao right in the subtitles.</strong> Auto captions write Leo, Lao or Laio. Fix every one before you export.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>No intro.</strong> No "hey guys", no product first. Start on the symptom.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Talk, do not read.</strong> A real voice beats a perfect script.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Real places.</strong> Your kitchen, your car, your bed, a real table. No studio.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Vertical 9:16, 1080 x 1920.</strong> Natural light, clear audio, label readable, no beauty filter.</span></div>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Six that worked</h3>
+    <p class="muted small" style="margin:0 0 18px">Six videos that sold. Swipe through and pick the one closest to how you film. Watch how fast each gets to the point.</p>
     <div class="vidrail">
 
       <div class="vidcard">
         <div class="vidwrap">
-          <video src="media/ex-table.mp4" poster="media/ex-table.jpg" preload="none" playsinline></video>
-          <button class="vidplay" type="button" aria-label="Play the hands and food example"><i></i></button>
+          <video src="media/ex-vanessa.mp4" poster="media/ex-vanessa.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the night heartburn story example"><i></i></button>
         </div>
-        <p class="vidtag">Hands and food, no face</p>
-        <p class="vidcap">Filmed from above at a real dinner. You never see her. Food, hands and captions carry the whole thing. The Liao goes in before the meal and it takes two seconds. Good if you would rather not be on camera.</p>
+        <p class="vidtag">Her story, full ritual</p>
+        <p class="vidcap">She tells her night heartburn story while she does the whole ritual on camera: pour, water, stir, drink. Word by word subtitles. Copy the story and the ritual. Do not copy "magic bullet" or "helps with GERD".</p>
       </div>
 
       <div class="vidcard">
         <div class="vidwrap">
-          <video src="media/ex-nightout.mp4" poster="media/ex-nightout.jpg" preload="none" playsinline></video>
-          <button class="vidplay" type="button" aria-label="Play the night out example"><i></i></button>
+          <video src="media/ex-heather.mp4" poster="media/ex-heather.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the bought it for my husband example"><i></i></button>
         </div>
-        <p class="vidtag">Out with friends</p>
-        <p class="vidcap">A birthday dinner. Cocktails on the table, and she takes her Liao in front of everyone without making it awkward. Filmed on a real night out, not staged at home. The point she lands is that she came prepared, not that she is restricted.</p>
+        <p class="vidtag">For someone you love</p>
+        <p class="vidcap">"I didn't buy this for myself. I bought it for my husband." Her voice tells the story while the video shows him: the pour, the stir, him drinking, cooking, eating dinner. Proof you do not need reflux yourself to sell it.</p>
+      </div>
+
+      <div class="vidcard">
+        <div class="vidwrap">
+          <video src="media/ex-ronnie.mp4" poster="media/ex-ronnie.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the question hook example"><i></i></button>
+        </div>
+        <p class="vidtag">The question hook</p>
+        <p class="vidcap">He opens with a question the viewer answers in their head: do you finish a big meal, and then the burning comes? Bottle and box on the table the whole time, big bold subtitles. Done in under 30 seconds.</p>
       </div>
 
       <div class="vidcard">
@@ -370,11 +530,11 @@ strong{font-weight:700}em{font-style:italic}
 
       <div class="vidcard">
         <div class="vidwrap">
-          <video src="media/ex-howitworks.mp4" poster="media/ex-howitworks.jpg" preload="none" playsinline></video>
-          <button class="vidplay" type="button" aria-label="Play the explaining how it works example"><i></i></button>
+          <video src="media/ex-tried.mp4" poster="media/ex-tried.jpg" preload="none" playsinline></video>
+          <button class="vidplay" type="button" aria-label="Play the tried everything example"><i></i></button>
         </div>
-        <p class="vidtag">Explaining how it works</p>
-        <p class="vidcap">Her kitchen, bottle in hand, walking through what each part actually does. Text on screen carries the detail so she can keep talking naturally. Good if you enjoy explaining things. Stick to how it works, never to what it cures.</p>
+        <p class="vidtag">Tried everything, then the answer</p>
+        <p class="vidcap">Every failed fix listed in the first seconds, then the product: what is in it, who made it, the free app and guide. Fast and dense. Copy the structure only. Its numbers, drug names and shipping line are wrong for you: use the facts on this page.</p>
       </div>
 
       <div class="vidcard">
@@ -388,270 +548,66 @@ strong{font-weight:700}em{font-style:italic}
 
     </div>
   </div>
-
-  <div class="filterbar rv" id="fbar">
-    <p id="ftext">Showing all 21 ideas. Pick an avatar above to narrow them down.</p>
-    <button class="reset" id="reset" hidden>Show all</button>
-  </div>
-
-  <div id="ideas-list">
-    <div class="grp" data-grp>
-      <div class="grp-h">You eat out more than you cook</div>
-
-      <div class="idea" data-open="false" data-p="out" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">A Week of Takeout<span class="pill">Make this first</span></span><span class="idea-c">The real reason your stomach is struggling.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Show the actual week. Delivery bags, the desk lunch, the 9pm dinner because work ran over. Be honest that you barely cook. Then the bloating and the belching afterwards, and where Liao comes in.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I have not properly cooked in about three weeks, and my stomach has completely given up on me."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="out">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Dinner at 9pm Again</span><span class="idea-c">Eating late because the day ran over, then paying for it.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>The clock. Eating standing up or on the sofa, far too late. Then lying down about an hour later and immediately regretting it. Show the Liao going in before the meal, not after.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"Eating dinner at nine and going to bed at eleven was destroying me and I did not even connect the two."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="out">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Get Ready With Me for Dinner Out<span class="pill">Make this first</span></span><span class="idea-c">Liao as a normal part of getting ready.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>A normal GRWM. Somewhere between the outfit and the door you take your Liao without making a thing of it. Do not stop to explain it.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"Getting ready for the first proper dinner out I have said yes to in months."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="grp" data-grp>
-      <div class="grp-h">You want the pasta</div>
-
-      <div class="idea" data-open="false" data-p="want" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Was Never About the Food<span class="pill">Make this first</span></span><span class="idea-c">The anxiety before you even order.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Reading a menu and putting it down. Scanning for the safe option. The look on your face when someone suggests the Thai place.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I was not scared of the food. I was scared of how I would feel two hours after it."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="want">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Meal I Used to Skip</span><span class="idea-c">Going back to the exact dish you gave up.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Go to the actual place. Order the actual thing. Eat it on camera. Name it out loud, not "spicy food" but "pad thai".</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I had not ordered pad thai in two years. Tonight I did."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="want">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Eat It Anyway</span><span class="idea-c">Taking Liao before the big dinner and going in.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>The meal you have actually been looking forward to. Pizza, the birthday dinner, the tasting menu. You take your Liao first, then you eat all of it.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I know exactly what this meal used to do to me. I am eating all of it anyway."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="grp" data-grp>
-      <div class="grp-h">The hours after dinner</div>
-
-      <div class="idea" data-open="false" data-p="after" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Burning Starts Later<span class="pill">Make this first</span></span><span class="idea-c">The meal was fine. An hour later it is not.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Eat a normal meal, relaxed. Cut to an hour later. Hand on your chest or throat, sitting forward, uncomfortable. Then the Liao routine.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"My heartburn never hit while I was eating. It showed up an hour later and ruined the rest of my night."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="after" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Afraid to Lie Down<span class="pill">Make this first</span></span><span class="idea-c">The dread that starts after dinner, not during it.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Checking the clock after dinner. Stacking pillows. Sitting upright in bed, exhausted, still awake. Then the evening Liao.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"The worst part was not dinner. It was knowing I could not lie down for three hours afterwards."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="after">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The 2am Test</span><span class="idea-c">Waking up with acid in your chest, night after night.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>The honest version of the bad night. Awake, propped up, standing at the kitchen sink at 2am. Then the after: actually asleep, actually rested.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I used to get up four or five times a night. Last week I slept straight through."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="grp" data-grp>
-      <div class="grp-h">It never seems to move</div>
-
-      <div class="idea" data-open="false" data-p="never" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Constant Burping<span class="pill">Make this first</span></span><span class="idea-c">The symptom nobody makes content about.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Eating with someone. Trying to hold a burp in. The awkward pause. Loosening your waistband under the table. Then the Liao routine before the next meal.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"Nobody talks about how embarrassing it is to burp through an entire dinner with someone."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="never">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Just Sits There</span><span class="idea-c">A normal meal that feels like it never moved.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>A small, ordinary meal. Then you afterwards, rubbing the top of your stomach, sitting instead of getting on with your evening. Show the waistband.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I could eat a normal lunch and feel like it was still sitting there at nine at night."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="never">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">I Thought That Was Normal</span><span class="idea-c">Telling people what is not actually normal after eating.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Straight to camera. Separate the two: feeling satisfied after a meal, versus swollen, burping, burning, heavy. Then say which one you were living with.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I genuinely thought everyone felt swollen and uncomfortable after eating."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="grp" data-grp>
-      <div class="grp-h">You have tried everything</div>
-
-      <div class="idea" data-open="false" data-p="tried" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Reflux Nightstand<span class="pill">Make this first</span></span><span class="idea-c">A slow pan across the evidence. No talking needed.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Pan slowly across your nightstand. Antacids. Water. The wedge or the extra pillows. Whatever else is there. End on the Liao bottle.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"Tell me you have reflux without telling me you have reflux."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="tried">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Everything I Planned Around It</span><span class="idea-c">A fast montage of all the small rules you made.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Quick cuts, one line each. What time you stop eating. What you order. Skipping the coffee. When you can lie down. Whether you can travel. Antacids in the bag.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I did not realize how much of my life was built around not setting off my reflux."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="tried">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">Three Herbs That Work Together</span><span class="idea-c">Why one herb on its own was never going to do it.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Show your own shelf of single herbs you have tried. Slippery elm on its own. Ginger on its own. Then explain the difference: Liao is three herbs picked to make each other stronger, concentrated ten times over. Not a list of trendy ingredients in a bottle.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I bought all of these one at a time. That was the mistake."</p></div>
-          <div class="row warn"><b>Careful</b><p>This is the only comparison we make, and it is about how the herbs work, never about a brand. Do not name or hold up another company's product.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="tried" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">I Was the Skeptic<span class="pill">Make this first</span></span><span class="idea-c">Own the doubt properly before you say anything good.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Say you did not believe a herbal syrup would do anything, and say why. Then what actually happened, including how long it took. Do not skip to the good part.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I was pretty sure this was going to be more expensive snake oil."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="tried">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">The Thing I Take Alongside</span><span class="idea-c">For anyone who has been on acid blockers for years.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Calm, sitting down, honest. How long you have been on them, what worries you about the long run, and what you added alongside.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I have been on my acid blocker for six years. I am not coming off it today."</p></div>
-          <div class="row warn"><b>Careful</b><p>Never name the drug. Never suggest anyone reduce or stop taking theirs. Always say "talk to your doctor." This is the strictest one in the pack.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="tried">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">It Might Not Be Your Throat<span class="pill">Nobody has made this</span></span><span class="idea-c">Throat clearing and phlegm, with no heartburn at all.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>Straight to camera. List it: clearing your throat every morning, the lump feeling, phlegm, a voice that goes rough by the afternoon. No chest burn at all. Then say it can be reflux you cannot feel.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"If you clear your throat every single morning, this might not be a throat thing."</p></div>
-          <div class="row warn"><b>Careful</b><p>Describe the symptoms, never diagnose anyone. Say "talk to your doctor."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-    <div class="grp" data-grp>
-      <div class="grp-h">The payoff, and the product</div>
-
-      <div class="idea" data-open="false" data-p="any" data-need="1">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">A Day I Did Not Think About It<span class="pill">Make this first</span></span><span class="idea-c">The whole point. What free actually looks like.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>An ordinary day where you ate normally and never once thought about your stomach. Coffee in the morning. A proper lunch. Pasta, bread and wine at dinner. Then just going to bed like anyone else. No symptoms on camera at all.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I ate pasta, bread and wine yesterday and I did not think about my stomach once. That used to be impossible."</p></div>
-          <div class="row"><b>Why we want this one</b><p>Every other idea shows the problem. This one shows what people are actually buying. Make it feel completely unremarkable, because that is the point.</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="any">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">First Sip<span class="pill">Easiest to shoot</span></span><span class="idea-c">One honest take, tasting it for the first time.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>One take, unedited. Pour, stir, drink, react honestly. If you do not love the taste, say so. It is honey thick with a licorice note.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"I have not tried this yet. Filming the first one."</p></div>
-        </div></div></div>
-      </div>
-
-      <div class="idea" data-open="false" data-p="any">
-        <button class="idea-btn" aria-expanded="false"><span class="idea-txt"><span class="idea-t">My Evening Routine</span><span class="idea-c">Liao slotted into a real routine, barely mentioned.</span></span><span class="chev"></span></button>
-        <div class="idea-body"><div class="inner"><div class="idea-pad">
-          <div class="row"><b>Film</b><p>The 30 seconds before you eat. Kettle, warm water, the stir, then the meal. Quiet, no rush, no explaining.</p></div>
-          <div class="row"><b>Open with</b><p class="quote">"This is the two minutes I take before dinner now."</p></div>
-        </div></div></div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-<section class="sec wrap" id="product">
-  <div class="sec-head rv">
-    <span class="sec-num">04</span>
-    <h2 class="d2">About the product</h2>
-    <p class="muted">What Liao actually is, in the words you can use on camera.</p>
-  </div>
-
-  <div class="rv facts">
-    <div class="fact"><span class="fact-m">+</span><span>Made by Dr. Lyda Kermani, a doctor of Chinese medicine, for her own father, who had heartburn for 30 years.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>Based on a Chinese herbal formula written down around 1,800 years ago, used all that time for exactly this.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>Four ingredients. Inula flower, licorice root, hematite, and a prebiotic. That is the whole label.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>100&#37; natural. No sugar, no artificial sweeteners, no colors, no flavors, no preservatives, no fillers, no alcohol, no gluten, no GMOs. Vegan, and third party tested.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>10 to 1 concentration when the industry standard is 5 to 1. That is 2.6 pounds of herbs in one small bottle.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>About $1.50 a day on the 3 month plan. Less than a coffee.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>30 day money back guarantee.</span></div>
-    <div class="fact"><span class="fact-m">+</span><span>Carried by 50+ practitioners in the US.</span></div>
-  </div>
 </section>
 
-<section class="sec wrap" id="facts">
+<section class="sec wrap" id="rules">
   <div class="sec-head rv">
     <span class="sec-num">05</span>
-    <h2 class="d2">Facts you can say out loud</h2>
-    <p class="muted">Only if your video needs a reason to believe. One or two, never all of them.</p>
+    <h2 class="d2">Rules, then submit</h2>
   </div>
 
-  <div class="rv">
-    <h3 class="eyebrow">How many people this is</h3>
-    <p class="muted small" style="margin-bottom:18px">You are not talking to a niche. Saying one of these out loud early is a good way to make someone realize the video is about them.</p>
-    <div class="stats-grid">
-      <div class="stat-c"><b>1 in 5</b><span>Americans get heartburn or acid reflux every single week</span></div>
-      <div class="stat-c"><b>2 in 5</b><span>get it at least once a month</span></div>
-      <div class="stat-c"><b>20%</b><span>of US adults have GERD, the chronic version of it</span></div>
-      <div class="stat-c"><b>$4bn</b><span>spent every year in the US looking for relief from it</span></div>
+  <div class="pd-grid rv">
+    <div class="pd pd-dream">
+      <span class="pd-k">Always</span>
+      <ul>
+        <li>Say only what is true for you</li>
+        <li>New to Liao? Talk about why you started, the ritual and the taste, not results you have not had</li>
+        <li>Talk about symptoms, never a diagnosis</li>
+        <li>Medical question? "Talk to your doctor."</li>
+        <li>Disclose the partnership the way your assignment says</li>
+      </ul>
     </div>
-    <p class="src">Weekly and monthly figures: International Foundation for Gastrointestinal Disorders. GERD prevalence: North America 18 to 28% per a review in Gut. Market size: US antacids category, approx $3.9bn in 2024.</p>
+    <div class="pd pd-prob">
+      <span class="pd-k">Never say or imply</span>
+      <ul>
+        <li>Cures, treats, heals, prevents or reverses reflux, GERD, LPR or silent reflux</li>
+        <li>Miracle or magic, in any wording</li>
+        <li>Clinically or medically proven</li>
+        <li>That Liao works better than medication</li>
+        <li>Stop, replace or reduce medication</li>
+        <li>Any drug by name. Say antacids or acid blockers</li>
+        <li>Works instantly, or by a certain day</li>
+        <li>No side effects, or safe for everyone</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="rv" style="margin-top:44px">
-    <h3 class="eyebrow">Public studies on the formula</h3>
-    <p class="muted small" style="margin-bottom:20px">This is published research, so you can say it on camera. Say the number and the source, not the word "proven".</p>
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Submit</h3>
+    <p class="muted small" style="margin:0 0 14px">Send one final video through the channel where Liao briefed you. Before you send it, check:</p>
     <div class="facts">
-      <div class="fact"><span class="fact-m">+</span><span><strong>A 2025 human trial put this formula head to head with a prescription acid blocker.</strong> 72 people with reflux, split into two groups. One group took the formula on its own. The other took rabeprazole, a prescription acid blocker, on its own. After 8 weeks the formula group scored better on heartburn, on acid coming back up, and on their overall symptom score. On the scope, 86&#37; of them improved against 46&#37; on the drug.<span class="cite">Chin J Integr Tradit West Med Dig, 2025, 33(6): 577-581. Open label, single centre, 63 of 72 completed.</span></span></div>
-      <div class="fact"><span class="fact-m">+</span><span><strong>Chinese herbal medicine beat acid blockers in a review of 14 trials.</strong> 1,444 patients with reflux. Herbal medicine on its own scored higher on total effectiveness than acid blockers on their own, with fewer people relapsing and fewer side effects. This one is about Chinese herbal medicine as a whole, not about Liao specifically, so say it that way.<span class="cite">Evid Based Complement Alternat Med, 2018. PMC5994284</span></span></div>
-      <div class="fact"><span class="fact-m">+</span><span><strong>A 2024 animal study on how it works.</strong> The formula protected the lining of the esophagus and brought inflammatory markers down. It also identified the biological pathway behind it. Animal study, so call it that.<span class="cite">J Ethnopharmacol, 2024. PMID 38342154</span></span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>The edit is tight.</strong> Hook in the first 3 seconds, no dead air, 30 to 60 seconds total.</span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Subtitles on every word you say.</strong></span></div>
+      <div class="fact"><span class="fact-m">+</span><span><strong>Captions are correct.</strong> Every word spelled right, Liao spelled L-I-A-O.</span></div>
     </div>
-    <p class="muted small" style="margin-top:18px">One thing to keep straight: Liao is <strong>based on</strong> that formula, it is not the formula. The original has seven herbs. Liao takes the three that do the work and concentrates them.</p>
+  </div>
+
+  <div class="rv" style="margin-top:36px">
+    <h3 class="eyebrow">Before you send</h3>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Would the right person think "that is me" in 3 seconds?</span></div>
+      <div class="step"><span class="step-n">2</span><span>One avatar, one story, one selling point, one CTA?</span></div>
+      <div class="step"><span class="step-n">3</span><span>Is the ritual on screen?</span></div>
+      <div class="step"><span class="step-n">4</span><span>Everything true for you, nothing from the never list?</span></div>
+      <div class="step"><span class="step-n">5</span><span>CTA and disclosure match your assignment?</span></div>
+    </div>
+    <p class="muted small">Five yes answers and you are ready.</p>
   </div>
 </section>
 
 <footer class="foot">
   <div class="wrap">
+    <p class="rv" style="margin-bottom:18px">Name the pain. Show the ritual. Sell the life.</p>
     <span class="mark rv">Li&#225;o</span>
   </div>
 </footer>
@@ -709,63 +665,28 @@ strong{font-weight:700}em{font-style:italic}
     });
   });
 
-  var probs = document.querySelectorAll(".prob");
-  var ideas = document.querySelectorAll(".idea");
-  var grps  = document.querySelectorAll("[data-grp]");
-  var bar   = document.getElementById("fbar");
-  var text  = document.getElementById("ftext");
-  var reset = document.getElementById("reset");
-  var total = ideas.length;
-  var active = null;
-
-  var NAMES = {
-    out:"someone who eats out more than they cook",
-    want:"someone who wants the pasta",
-    after:"the hours after dinner",
-    never:"food that never seems to move",
-    tried:"someone who has tried everything"
-  };
-
-  function apply(){
-    var shown = 0;
-    ideas.forEach(function(a){
-      var tag = a.getAttribute("data-p");
-      var show = !active || tag === active || tag === "any";
-      a.classList.toggle("hide", !show);
-      if (show) shown++;
-    });
-    grps.forEach(function(g){
-      g.style.display = g.querySelector(".idea:not(.hide)") ? "" : "none";
-    });
-    if (active) {
-      bar.classList.add("on");
-      text.innerHTML = "Showing <b>" + shown + " ideas</b> for " + NAMES[active] + ", plus the three that work for anyone.";
-      reset.hidden = false;
-    } else {
-      bar.classList.remove("on");
-      text.textContent = "Showing all " + total + " ideas. Pick an avatar above to narrow them down.";
-      reset.hidden = true;
-    }
-  }
-
-  probs.forEach(function(c){
+  // lane picker: one lane visible at a time, tap again to close
+  var laneBtns = [].slice.call(document.querySelectorAll("#lanepick .prob"));
+  var laneEls = {};
+  laneBtns.forEach(function(c){
+    laneEls[c.getAttribute("data-lane")] = document.getElementById(c.getAttribute("aria-controls"));
+  });
+  laneBtns.forEach(function(c){
     c.addEventListener("click", function(){
-      var key = c.getAttribute("data-p");
-      active = (active === key) ? null : key;
-      probs.forEach(function(o){
-        o.setAttribute("aria-pressed", o.getAttribute("data-p") === active ? "true" : "false");
+      var key = c.getAttribute("data-lane");
+      var wasOn = c.getAttribute("aria-pressed") === "true";
+      laneBtns.forEach(function(o){
+        var on = !wasOn && o === c;
+        o.setAttribute("aria-pressed", on ? "true" : "false");
+        o.setAttribute("aria-expanded", on ? "true" : "false");
       });
-      apply();
-      if (active) {
-        var t = document.getElementById("ideas");
-        if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      Object.keys(laneEls).forEach(function(k){
+        if (laneEls[k]) laneEls[k].classList.toggle("on", !wasOn && k === key);
+      });
+      if (!wasOn && laneEls[key]) {
+        laneEls[key].scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
       }
     });
-  });
-  reset.addEventListener("click", function(){
-    active = null;
-    probs.forEach(function(o){ o.setAttribute("aria-pressed","false"); });
-    apply();
   });
 
   var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
@@ -787,7 +708,7 @@ strong{font-weight:700}em{font-style:italic}
   window.addEventListener("resize", sweep, { passive: true });
   window.addEventListener("load", sweep);
   [400,1200,2500].forEach(function(t){ window.setTimeout(sweep, t); });
-  sweep(); onScroll(); apply();
+  sweep(); onScroll();
 
   totop.addEventListener("click", function(){
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
